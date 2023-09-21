@@ -2,13 +2,16 @@
 
 ## 1. Project Description
 State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application to ... 
+This browser based web application is to offer restaurant-goers a forum to share experiences and a map 
 
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
+* Calvin Lee - Project Leader
+* Brian Le - Design Head
+* Alenn Dupaya - Programmer
+* Billy Wei - Programmer
 * ... HI I AM BRYAN I AM NEW TO CODING AND EXCITED TO LEARN
-* ... Hi I am Billy and I am excited to 
-learn new skills in tech!
+* ... Hello I am Alenn hello hello
 * ...
 	
 ## 3. Technologies and Resources Used
@@ -16,7 +19,6 @@ List technologies (with version numbers), API's, icons, fonts, images, media or 
 * HTML, CSS, JavaScript
 * Bootstrap 5.0 (Frontend library)
 * Firebase 8.0 (BAAS - Backend as a Service)
-* ...
 
 ## 4. Complete setup/installion/usage
 State what a user needs to do when they come to your project.  How do others start using your code or application?
