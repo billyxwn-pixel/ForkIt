@@ -10,6 +10,9 @@ List team members and/or short bio's here...
 * Brian Le - Design Head
 * Alenn Dupaya - Programmer
 * Billy Wei - Programmer
+* ... HI I AM BRYAN I AM NEW TO CODING AND EXCITED TO LEARN
+* ... Hello I am Alenn hello hello
+* ...
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
