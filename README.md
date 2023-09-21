@@ -12,7 +12,7 @@ List team members and/or short bio's here...
 * Billy Wei - Programmer
 * ... HI I AM BRYAN I AM NEW TO CODING AND EXCITED TO LEARN
 * ... Hello I am Alenn hello hello
-* ...
+* ... Hello I am Calvin, nice to meet you guys.
 	
 ## 3. Technologies and Resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
