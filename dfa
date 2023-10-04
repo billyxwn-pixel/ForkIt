@@ -1,0 +1,62 @@
+[33mcommit 458d1935234e4d1ed5b0bb58611ca1bf843593e8[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Billy Wei <billyxwn@gmail.com>
+Date:   Thu Sep 21 11:08:59 2023 -0700
+
+    Added Bill's Intro
+
+[33mcommit 7f9e7c178c278a6a796299f5a5e3b263308aab78[m
+Merge: ac6625b 0678263
+Author: Billy Wei <billyxwn@gmail.com>
+Date:   Thu Sep 21 11:05:13 2023 -0700
+
+    Merge branch 'main' of https://github.com/calbunn/1800_202330_BBY26
+
+[33mcommit ac6625b1a65e23b8446b6aa765652225af0fe2aa[m
+Merge: 18fbfdc 1d8b761
+Author: Billy Wei <billyxwn@gmail.com>
+Date:   Thu Sep 21 11:05:02 2023 -0700
+
+    Merge branch 'main' of https://github.com/calbunn/1800_202330_BBY26
+
+[33mcommit 0678263ebb8fe046f4330c6112fcbefe62118d79[m
+Author: Calvin Lee <calvinnleeee@gmail.com>
+Date:   Thu Sep 21 11:02:49 2023 -0700
+
+    Added my own line to introduction - Calvin
+
+[33mcommit 18fbfdc293cfb9f3ea611ca7e6f1d7a65f408254[m
+Author: Billy Wei <billyxwn@gmail.com>
+Date:   Thu Sep 21 10:59:05 2023 -0700
+
+    I love GitHub!
+
+[33mcommit 1d8b761f4535a8cfd8e00b515a4c6b52916e8df7[m
+Merge: 6c75bd2 04769a9
+Author: Calvin Lee <calvinnleeee@gmail.com>
+Date:   Thu Sep 21 10:58:37 2023 -0700
+
+    Team member section updated.
+
+[33mcommit 6c75bd2389d332db0b73aaa21ef6b0afa911b9c6[m
+Author: Calvin Lee <calvinnleeee@gmail.com>
+Date:   Thu Sep 21 10:49:42 2023 -0700
+
+    Added some info about project members
+
+[33mcommit 04769a9cf1fb65ee74b063bad129c8fd1040fa9a[m
+Author: Alenn Dupaya <gdupaya@my.bcit.ca>
+Date:   Thu Sep 21 10:45:36 2023 -0700
+
+    Added one line intro to README.md file for Alenn.
+
+[33mcommit f7175272a3cf56095511b370b8f41631ee4f6684[m
+Author: Bryan <ble16@my.bcit.ca>
+Date:   Thu Sep 21 10:40:07 2023 -0700
+
+    Added one line intro to README file for Bryan
+
+[33mcommit 0d1b6a4a590e8458d333cd7f2ac510d2bfc43acd[m
+Author: Calvin Lee <49921606+calbunn@users.noreply.github.com>
+Date:   Thu Sep 21 10:27:52 2023 -0700
+
+    Initial commit
