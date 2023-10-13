@@ -1,3 +1,4 @@
+
 # Project Title
 
 ## 1. Project Description
@@ -7,7 +8,7 @@ This browser based web application is to offer restaurant-goers a forum to share
 ## 2. Names of Contributors
 List team members and/or short bio's here... 
 * Calvin Lee - Project Leader
-* Brian Le - Design Head
+* Bryan Le - Design Head
 * Alenn Dupaya - Programmer
 * Billy Wei - Programmer
 * ... HI I AM BRYAN I AM NEW TO CODING AND EXCITED TO LEARN
@@ -61,5 +62,4 @@ It has the following subfolders and files:
 
 
 ```
-
 
