@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .centered {
     align-self: center;
     justify-self: center;
@@ -7,6 +8,8 @@
     margin-top: 10px;
 }
 
+=======
+>>>>>>> 5127813487a5ac01721feee5618a016db83357bb
 .container {
     display: grid;
     height: 100vh;
@@ -29,4 +32,10 @@
 
 #content1 {
     background: white;
+<<<<<<< HEAD
     grid-area: content1;
+=======
+    grid-area: content1;
+
+}
+>>>>>>> 5127813487a5ac01721feee5618a016db83357bb
