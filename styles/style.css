@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .centered {
     align-self: center;
     justify-self: center;
@@ -8,34 +7,33 @@
     margin-top: 10px;
 }
 
-=======
->>>>>>> 5127813487a5ac01721feee5618a016db83357bb
 .container {
     display: grid;
     height: 100vh;
     margin-left: -8px;
-    grid-template-columns: 700px;
-    grid-template-rows: 50% 50%;
+    grid-template-columns: 100vw;
+    grid-template-rows: 50% 1fr;
     background-color: white;
     grid-template-areas:
         "community"
         "content1";
 }
-
+#search{
+    position: fixed;
+    top: 0;
+}
 #community {
     background: lightgray;
     grid-area: community;
     width: 100vw;
     margin: 0;
+    padding-top: 6%;
     
 }
 
 #content1 {
     background: white;
-<<<<<<< HEAD
     grid-area: content1;
-=======
     grid-area: content1;
 
 }
->>>>>>> 5127813487a5ac01721feee5618a016db83357bb
