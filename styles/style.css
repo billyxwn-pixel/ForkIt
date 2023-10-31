@@ -1,6 +1,9 @@
-.centered {
-    align-self: center;
-    justify-self: center;
+.container_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 500px;
+    position:relative;
 }
 
 .bcontent {
@@ -24,10 +27,12 @@
 }
 #community {
     background: lightgray;
-    grid-area: community;
+    display: flex;
     width: 100vw;
     margin: 0;
     padding-top: 6%;
+    justify-content:center;
+    align-items: center;
     
 }
 
