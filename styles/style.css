@@ -2,8 +2,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 500px;
-    position:relative;
+    position: relative;
+    width: 50vw;
 }
 
 .bcontent {
