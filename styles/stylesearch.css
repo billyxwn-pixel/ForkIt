@@ -1,0 +1,75 @@
+.container_centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 75vw;
+    height: 35vh;
+}
+.timetext{
+    font-size: 15pt;
+}
+#img{
+    height: 20vh;
+}
+.responsive {
+    width: 100%;
+    height: auto;
+}
+
+.bcontent {
+    margin-top: 10px
+}
+
+.container {
+    display: grid;
+    height: 100vh;
+    margin-left: -8px;
+    grid-template-columns: 100vw;
+    grid-template-rows: 50% 1fr;
+    background-color: white;
+    grid-template-areas:
+        "community"
+        "content1";
+}
+.texttitle{
+    font-size: 10pt;
+}
+.text{
+    font-size: 5pt;
+}
+#topcard{
+    margin-top: 40px;
+}
+
+.center {  
+    text-align: center;
+}
+
+.container1 {
+    margin: 20px;
+    padding: 20px;
+}
+
+#search {
+    position: fixed;
+    top: 0;
+}
+
+#community {
+    background: lightgray;
+    display: flex;
+    width: 100vw;
+    margin: 0;
+    padding-top: 6%;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#content1 {
+    background: white;
+    grid-area: content1;
+    grid-area: content1;
+
+}
