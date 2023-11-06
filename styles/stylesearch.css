@@ -26,11 +26,8 @@
     height: 100vh;
     margin-left: -8px;
     grid-template-columns: 100vw;
-    grid-template-rows: 50% 1fr;
+    grid-template-rows: 1fr;
     background-color: white;
-    grid-template-areas:
-        "community"
-        "content1";
 }
 .texttitle{
     font-size: 10pt;

@@ -26,7 +26,6 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script>
-    
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.css" />
 
     <!-- Other libraries go here -->
@@ -43,17 +42,24 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
+
+    <div class="container">
+        <div id="restaurant-goes-here" class="row row-cols-12">
+        </div>
+    </div>
+    
+    <template id="restCardTemp">
     <div class="container_centered mx-auto" id="topcard">
         <div class="card" id="card-body">
             <div class="row no-gutters">
                 <div class="col-12" id="img">
-                    <img class="card-img" src="./images/Restaurant_Stock.jpg" alt="Restaurant Picture"
+                    <img class="card-img" src="..." alt="..."
                         style="height: 100%;">
                 </div>
                 <div class="col-7">
                     <div class="card-body">
-                        <h5 class="card-title" class="texttitle">Thai Go</h5>
-                        <p class="card-text" class="text">Thai,Fast / Attendance: 100 </p>
+                        <h5 class="texttitle" class="card-title">Rest Title</h5>
+                        <p class="card-text" class="text">Tags / Attendance</p>
                     </div>
                 </div>
                 <div class="col-5">
@@ -64,6 +70,7 @@
             </div>
         </div>
     </div>
+    </template>
 
 
     <!-- Search Bar -->
@@ -98,8 +105,8 @@
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
+    <script src="./scripts/firebaseAPI_BBY26.js"></script>
     <script src="./scripts/search.js"></script>
-    <script src="firebaseAPI_BBY26.js"></script>
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
 
