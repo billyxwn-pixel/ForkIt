@@ -5,6 +5,8 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "CAFE1",
         name: "Cafe One",
+        // location: new firebase.firestore.GeoPoint(49.3128901, -126.71284),
+        //https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/GeoPoint
         latitude: 49.3128901,
         longitude: -126.71284,
         recently_visited: 347,  
