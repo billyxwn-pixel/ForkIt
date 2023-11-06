@@ -1,0 +1,147 @@
+/*
+Gradient for light top and dark bottom for background image:
+linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5))
+
+Star-shaped div:
+clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+Half-star-shaped div:
+clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+
+*/
+
+#restaurant_detail {
+    display: grid;
+    grid-template-rows: 34vh 33vh 33vh;
+}
+
+/* ------------------------------------------ */
+/* Top third of the screen */
+#topthird {
+    grid-row: 1;
+    /* test background image */
+    /* background-image: url(https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg); */
+    /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg); */
+    background-position: center;
+    opacity: 100%;
+}
+
+.backbutton {
+    background-color: white;
+    width: 30px;
+    height: 30px;
+    opacity: 100%;
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    clip-path: polygon(70% 15%, 30% 50%, 70% 85%, 60% 85%, 20% 50%, 60% 15%);
+}
+
+#name_and_stars {
+    position: relative;
+    width: max-content;
+    top: 70%;
+    left: 5%;
+}
+
+#restaurant_name {
+    padding: 0px;
+    margin: 0px;
+    font-size: 20pt;
+    color: white;
+    padding-bottom: 0;
+}
+
+#star1, #star2, #star3, #star4, #star5 {
+    display: none;
+}
+
+.star {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+} 
+
+.half_star {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+/* ------------------------------------------ */
+/* Middle third of screen */
+#midthird {
+    grid-row: 2;
+    display: grid;
+    grid-template-rows: 15% 85%;
+    grid-template-columns: 50% 50%;
+    background-color: beige;
+}
+
+#keywords {
+    grid-row: 1;
+    grid-column: 1 / span 2;
+    margin-top: 10px;
+    margin-left: 15px;
+}
+
+#contact_and_location {
+    grid-row: 2;
+    grid-column: 1;
+    display: grid;
+    grid-template-rows: 50% 50%;
+}
+
+#contactinfo p {
+    padding-left: 10px;
+    margin-top: 0;
+    margin-bottom: 0;
+    text-overflow: ellipsis;
+}
+
+#location {
+    padding-left: 10px;
+}
+
+#location p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+#hours {
+    grid-row: 2;
+    grid-column: 2;
+}
+
+#open_or_closed {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+
+/* ------------------------------------------ */
+/* Bottom third of screen */
+#botthird {
+    grid-row: 3;
+    background-color: gray;
+}
+
+#botthird > p {
+    padding-top: 10px;
+    font-size: 18pt;
+    text-align: center;
+}
+
+#review_buttons {
+    background-color: yellow;
+    padding-bottom: 10px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#review_button, #more_reviews {
+    width: 150px;
+    height: 40px;
+}
