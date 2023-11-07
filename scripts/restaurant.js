@@ -24,8 +24,8 @@ function getRestaurantData(restaurant_id) {
                 var res_phone = doc.data().phone;
                 var res_email = doc.data().email;       // reminder: this is to test for no-email cases
                 var res_website = doc.data().website;   // reminder: test some places that don't have websites
-                var res_address = doc.data().address;   // reminder: need to add to document
-                var res_zipcode = doc.data().zipcode;
+                // var res_address = doc.data().address;   // reminder: need to add to document
+                // var res_zipcode = doc.data().zipcode;
                 var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
                 // var res_reviews = doc.data().reviews;   // reminder: test later
 
@@ -57,6 +57,22 @@ function getRestaurantData(restaurant_id) {
                     document.getElementById("website").innerHTML = res_website;
                 }
                 
+                let hours = {
+                    "mon": res_hours.mon,
+                    "tue": res_hours.tue,
+                    "wed": res_hours.wed,
+                    "thu": res_hours.thu,
+                    "fri": res_hours.fri,
+                    "sat": res_hours.sat,
+                    "sun": res_hours.sun
+                };
+                for (let x = 0; x < Object.keys(hours).length; x++) {
+                    let str = Object.values(hours)[x].split(" ");
+                    const newstr = str[0] + " " + str[1] + " - " + str[2] + " " + str[3];
+                    console.log(newstr);
+                    // console.log(Object.keys(hours)[x] + " " + str);
+                    document.getElementById(Object.keys(hours)[x]).innerHTML = newstr;
+                }
                 
             }
         })
