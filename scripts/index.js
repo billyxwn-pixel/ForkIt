@@ -1,15 +1,8 @@
 function writeRestaurants() {
     //define a variable for the collection you want to create in Firestore to populate data
     var restaurantTempData = db.collection("restaurants");
-    db.collection("restaurants").doc()
-    .onSnapshot(doc => {
-        console.log(doc.data());
- });
 
-// hours
-// keywords
-// stars
-
+    // keywords still need to be added
 
     restaurantTempData.add({
         code: "CAFE1",
