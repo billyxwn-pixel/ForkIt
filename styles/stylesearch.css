@@ -1,13 +1,17 @@
+
 .container_centered {
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
     position: relative;
-    width: 75vw;
+    width: 80vw;
     height: 35vh;
 }
 .timetext{
     font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 #img{
     height: 20vh;
@@ -30,7 +34,7 @@
     background-color: white;
 }
 .texttitle{
-    font-size: 10pt;
+    font-size: 15pt;
 }
 .text{
     font-size: 5pt;
@@ -49,6 +53,7 @@
 }
 
 #search {
+    width: 125vw;
     position: fixed;
     top: 0;
 }
