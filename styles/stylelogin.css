@@ -58,3 +58,7 @@
     grid-area: content1;
 
 }
+
+#loader {
+    text-align: center;
+}
