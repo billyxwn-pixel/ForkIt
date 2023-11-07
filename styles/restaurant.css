@@ -18,9 +18,8 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 /* Top third of the screen */
 #topthird {
     grid-row: 1;
-    /* test background image */
-    /* background-image: url(https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg); */
-    /* background-image: linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg); */
+    /* default bg image to load if database doesn't have one */
+    background-image: url("./images/default_img.png");
     background-position: center;
     opacity: 100%;
 }
