@@ -7,15 +7,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "CAFE1",
         name: "Cafe One",
-        keywords: hours = new Map([
-            ["mon", "9 AM 10 PM"],
-            ["tue", "9 AM 10 PM"],
-            ["wed", "9 AM 10 PM"],
-            ["thu", "9 AM 10 PM"],
-            ["fri", "9 AM 10 PM"],
-            ["sat", "10 AM 5 PM"],
-            ["sun", "10 AM 5 PM"],
-          ]),
+        hours: {
+            "mon": "9 AM 10 PM",
+            "tue": "9 AM 10 PM",
+            "wed": "9 AM 10 PM",
+            "thu": "9 AM 10 PM",
+            "fri": "9 AM 10 PM",
+            "sat": "10 AM 5 PM",
+            "sun": "10 AM 5 PM"
+        },
         // location: new firebase.firestore.GeoPoint(49.3128901, -126.71284),
         //https://firebase.google.com/docs/reference/kotlin/com/google/firebase/firestore/GeoPoint
         latitude: 49.3128901,
@@ -31,15 +31,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "CAFE2",
         name: "Cafe Two",
-        keywords: hours = new Map([
-            ["mon", "9 AM 10 PM"],
-            ["tue", "9 AM 10 PM"],
-            ["wed", "9 AM 10 PM"],
-            ["thu", "9 AM 10 PM"],
-            ["fri", "9 AM 10 PM"],
-            ["sat", "10 AM 10 PM"],
-            ["sun", "10 AM 10 PM"],
-          ]),
+        hours: {
+             "mon": "9 AM 10 PM" ,
+             "tue": "9 AM 10 PM" ,
+             "wed": "9 AM 10 PM" ,
+             "thu": "9 AM 10 PM" ,
+             "fri": "9 AM 10 PM" ,
+             "sat": "10 AM 10 PM" ,
+             "sun": "10 AM 10 PM" 
+        },
         latitude: 50.312811,
         longitude: -127.71884,
         recently_visited: 53,
@@ -53,15 +53,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "FF1",
         name: "FastFood One",
-        keywords: hours = new Map([
-            ["mon", "9 AM 8 PM"],
-            ["tue", "9 AM 8 PM"],
-            ["wed", "9 AM 8 PM"],
-            ["thu", "9 AM 8 PM"],
-            ["fri", "9 AM 8 PM"],
-            ["sat", "9 AM 8 PM"],
-            ["sun", "9 AM 8 PM"],
-          ]),
+        hours: {
+             "mon": "9 AM 8 PM" ,
+             "tue": "9 AM 8 PM" ,
+             "wed": "9 AM 8 PM" ,
+             "thu": "9 AM 8 PM" ,
+             "fri": "9 AM 8 PM" ,
+             "sat": "9 AM 8 PM" ,
+             "sun": "9 AM 8 PM" 
+        },
         latitude: 51.2884511,
         longitude: -128.8123124,
         recently_visited: 1012,
@@ -76,15 +76,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "FF2",
         name: "FastFood Two",
-        keywords: hours = new Map([
-            ["mon", "12 AM 12 AM"],
-            ["tue", "12 AM 12 AM"],
-            ["wed", "12 AM 12 AM"],
-            ["thu", "12 AM 12 AM"],
-            ["fri", "12 AM 12 AM"],
-            ["sat", "9 AM 9 PM"],
-            ["sun", "9 AM 9 PM"],
-          ]),
+        hours: {
+             "mon": "12 AM 12 AM" ,
+             "tue": "12 AM 12 AM" ,
+             "wed": "12 AM 12 AM" ,
+             "thu": "12 AM 12 AM" ,
+             "fri": "12 AM 12 AM" ,
+             "sat": "9 AM 9 PM" ,
+             "sun": "9 AM 9 PM" 
+        },
         latitude: 48.3128901,
         longitude: -125.684584,
         recently_visited: 842,
@@ -99,15 +99,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "FR1",
         name: "FancyRestaurant 1",
-        keywords: hours = new Map([
-            ["mon", "12 PM 11 PM"],
-            ["tue", "12 PM 11 PM"],
-            ["wed", "12 PM 11 PM"],
-            ["thu", "12 PM 11 PM"],
-            ["fri", "12 PM 11 PM"],
-            ["sat", "12 PM 11 PM"],
-            ["sun", "12 PM 11 PM"],
-          ]),
+        hours: {
+             "mon": "12 PM 11 PM" ,
+             "tue": "12 PM 11 PM" ,
+             "wed": "12 PM 11 PM" ,
+             "thu": "12 PM 11 PM" ,
+             "fri": "12 PM 11 PM" ,
+             "sat": "12 PM 11 PM" ,
+             "sun": "12 PM 11 PM" 
+        },
         latitude: 55.78511,
         longitude: -137.182184,
         recently_visited: 512,
@@ -122,15 +122,15 @@ function writeRestaurants() {
     restaurantTempData.add({
         code: "FR2",
         name: "FancyRestaurant 2",
-        keywords: hours = new Map([
-            ["mon", "12 PM 10 PM"],
-            ["tue", "12 PM 10 PM"],
-            ["wed", "12 PM 10 PM"],
-            ["thu", "12 PM 10 PM"],
-            ["fri", "12 PM 10 PM"],
-            ["sat", "12 PM 10 PM"],
-            ["sun", "12 PM 10 PM"],
-          ]),
+        hours: {
+             "mon": "12 PM 10 PM" ,
+             "tue": "12 PM 10 PM" ,
+             "wed": "12 PM 10 PM" ,
+             "thu": "12 PM 10 PM" ,
+             "fri": "12 PM 10 PM" ,
+             "sat": "12 PM 10 PM" ,
+             "sun": "12 PM 10 PM" 
+        },
         latitude: 58.5815219,
         longitude: -147.18123894,
         recently_visited: 512,
