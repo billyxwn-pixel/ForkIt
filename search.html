@@ -73,40 +73,18 @@
     </template>
 
 
-    <!-- Search Bar -->
-    <div id="search" class="input-group rounded">
-        <input type="search" class="form-control rounded" placeholder="Ex: Thai, Chinese, Pizzeria.."
-            aria-label="Search" aria-describedby="search-addon" />
-        <span class="input-group-text border-0" id="search-addon">
-            <i class="fas fa-search "></i>
-        </span>
-    </div>
+   <!---Search bar is loaded here-->
+   <div id="searchbarPlaceholder"></div>
 
-
-
-    <!-- Navbar (sticky bottom) -->
-    <nav class="navbar fixed-bottom bg-body-tertiary justify-content-center">
-        <div class="container-fluid nav-fill text-center">
-            <a class="nav-link" href="./home.html"><img class="mx-auto d-table-row align-text-bottom nav-logo"
-                    src="./images/home_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
-                    style="width: 36px; height: 36px;">Home</a>
-            <a class="nav-link" href="./search.html"><img class="mx-auto d-table-row align-text-bottom nav-logo"
-                    src="./images/search_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
-                    style="width: 36px; height: 36px;">Search</a>
-            <a class="nav-link" href="./community.html"><img class="mx-auto d-table-row align-text-bottom nav-logo"
-                    src="./images/group_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
-                    style="width: 36px; height: 36px;">Community</a>
-            <a class="nav-link" href="#"><img class="mx-auto d-table-row align-text-bottom nav-logo"
-                    src="./images/menu_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
-                    style="width: 36px; height: 36px;">More...</a>
-        </div>
-    </nav>
+    <!----sticky navbar footer is loaded here---->
+    <nav id="footerPlaceholder"></nav>
 
     <!---------------------------------------------->
     <!-- Your own JavaScript functions go here    -->
     <!---------------------------------------------->
     <script src="./scripts/firebaseAPI_BBY26.js"></script>
     <script src="./scripts/search.js"></script>
+    <script src="./scripts/skeleton.js"></script>
     <!-- Link to scripts of your own -->
     <!-- <script src="./scripts/script.js"></script> -->
 
