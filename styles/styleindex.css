@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 50vw;
+    width: 80vw;
 }
 
 .responsive {
@@ -27,8 +27,25 @@
         "content1";
 }
 
+.timetext{
+    font-size: 15pt;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#img{
+    height: 20vh;
+}
+
 .center {  
     text-align: center;
+}
+
+.texttitle{
+    font-size: 15pt;
+}
+.text{
+    font-size: 5pt;
 }
 
 .container1 {
@@ -54,7 +71,6 @@
 
 #content1 {
     background: white;
-    grid-area: content1;
     grid-area: content1;
 
 }
