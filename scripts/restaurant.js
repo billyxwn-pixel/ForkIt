@@ -7,7 +7,7 @@ function getRestaurantData(restaurant_id) {
     // document.getElementById("topthird").style = 
     // Create database object representing collection of restaurants, and iterate
     // through each document until you reach the restaurant that matches the ID
-    db.collection("restaurants").get().then(allRestaurants => {
+    db.collection("restaurant").get().then(allRestaurants => {
         allRestaurants.forEach(doc => {
 
             // if ID from document matches ID given from URL/localstorage, pull information
@@ -27,12 +27,34 @@ function getRestaurantData(restaurant_id) {
                 var res_address = doc.data().address;   // reminder: need to add to document
                 var res_zipcode = doc.data().zipcode;
                 var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
-                var res_reviews = doc.data().reviews;   // reminder: test later
+                // var res_reviews = doc.data().reviews;   // reminder: test later
 
-                // Change values in top third of layout
+                // Change values in top third of layout (restaurant name, background image, stars)
                 document.getElementById("restaurant_name").innerHTML = "<b>" + res_name + "</b>";
                 if (res_bgimage != null && res_bgimage != "") {
+                    // use first line for URL, second line for image code to pull from image folder
                     document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(" + res_bgimage + ")";
+                    // document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(\"./images/" + res_bgimage + ".png\")";
+                }
+                setStarDisplay(res_stars);
+                
+                // Change values for middle third of layout (keywords, phone, email, website, hours)
+                if (res_keywords.length != 0) {
+                    let str = "Categories: ";
+                    for (let x = 0; x < res_keywords.length; x++) {
+                        str += res_keywords[x];
+                        if (x < res_keywords.length - 1) str += ", ";
+                    }
+                    document.getElementById("keywords").innerHTML = str;
+                }
+                if (res_phone != null && res_phone != "") {
+                    document.getElementById("phonenumber").innerHTML = res_phone;
+                }
+                if (res_email != undefined && res_email != "" && res_email != null) {
+                    document.getElementById("email").innerHTML = res_email;
+                }
+                if (res_website != undefined && res_website != "" && res_website != null) {
+                    document.getElementById("website").innerHTML = res_website;
                 }
                 
                 
@@ -40,6 +62,7 @@ function getRestaurantData(restaurant_id) {
         })
     })
 }
+getRestaurantData("vCALZuwuPfFu9ZwXodie");
 
 // Function for adjusting star display depending on the number passed in.
 // 0 = 0 stars
@@ -62,6 +85,8 @@ function setStarDisplay(num) {
 // test the function by running it
 // setStarDisplay(3.4);
 
+// CURRENTLY UNDEFINED
+// Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
 function getReviews(restaurant_id) {
 
 }
@@ -70,7 +95,7 @@ function testBG() {
     var testURL = "https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg";
     document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(" + testURL + ")";
 }
-testBG();
+// testBG();
 
 // //------------------------------------------------------------------------------
 // // Input parameter is a string representing the collection we are reading from
