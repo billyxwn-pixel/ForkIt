@@ -1,72 +1,124 @@
-    //to pull the query from the local storage
-    var queryid = localStorage.getItem("query");
-    
-    //code is for if there is no query whatsoever
-    function displayCardsDyanmically1(collection){
-        let cardTemplate = document.getElementById("restCardTemp");
-    
-        db.collection(collection)
-        .get()
-        .then(allRest=> {
-    
-            allRest.forEach(doc => {
-                var title = doc.data().name;
-                var details = doc.data().recent_visit;
-                var RestCode = doc.data().bgImage;
-                var resttime = doc.data().hours.fri;
-                var resthours = resttime.split(" ");
-                var am = resthours[0] + resthours[1];
-                var pm = resthours[2] + resthours[3];
-                var restkeyword = doc.data().keywords;
-                var docID = doc.id;
-                let newcard = cardTemplate.content.cloneNode(true);
-               
-                newcard.querySelector('.texttitle').innerHTML = title;
-                newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
-                newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
-                newcard.querySelector('.card-img').src = RestCode;
-    
-                document.getElementById(collection + "-goes-here").appendChild(newcard)
-    
-            })
-        })
+//to pull the query from the local storage
+var queryid = localStorage.getItem("query");
+
+//code is for if there is no query whatsoever
+// function displayCardsDynamically(collection) {
+//     let cardTemplate = document.getElementById("restCardTemp");
+
+//     db.collection(collection)
+//     .get()
+//     .then(allRest => {
+
+//         allRest.forEach(doc => {
+//             var title = doc.data().name;
+//             var details = doc.data().recent_visit;
+//             var RestCode = doc.data().bgImage;
+//             var resttime = doc.data().hours.fri;
+//             var resthours = resttime.split(" ");
+//             var am = resthours[0] + resthours[1];
+//             var pm = resthours[2] + resthours[3];
+//             var restkeyword = doc.data().keywords;
+//             var docID = doc.id;
+//             let newcard = cardTemplate.content.cloneNode(true);
+            
+//             newcard.querySelector('.texttitle').innerHTML = title;
+//             newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
+//             newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
+//             newcard.querySelector('.card-img').src = RestCode;
+
+//             newcard.getElementById("topcard").addEventListener("click", function (event) {
+//                 // utilizing local storage to pass restaurant id
+//                 // localStorage.setItem("id", docID);
+//                 // window.location.href = "./restaurant.html";
+
+//                 // utilizing URL
+//                 window.location.href = "./restaurant.html?id=" + docID;
+//             });
+
+//             document.getElementById(collection + "-goes-here").appendChild(newcard)
+//         })
+//     })
+// }
+// //code for if a query is sent in
+// function displayCardsDynamically2(collection){
+//     let cardTemplate = document.getElementById("restCardTemp");
+//     console.log(queryid)
+//     db.collection(collection)
+//     .orderBy(queryid)
+//     .get()
+//     .then(allRest=> {
+
+//         allRest.forEach(doc => {
+//             var title = doc.data().name;
+//             var details = doc.data().recent_visit;
+//             var RestCode = doc.data().bgImage;
+//             var resttime = doc.data().hours.fri;
+//             var resthours = resttime.split(" ");
+//             var am = resthours[0] + resthours[1];
+//             var pm = resthours[2] + resthours[3];
+//             var restkeyword = doc.data().keywords;
+//             var docID = doc.id;
+//             let newcard = cardTemplate.content.cloneNode(true);
+            
+//             newcard.querySelector('.texttitle').innerHTML = title;
+//             newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
+//             newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
+//             newcard.querySelector('.card-img').src = RestCode;
+
+//             document.getElementById(collection + "-goes-here").appendChild(newcard)
+
+//         })
+//     })
+// }
+
+// test
+function dynamicCards(collection) {
+    console.log(queryid);
+    if (queryid != null && queryid != "" && queryid != undefined) {
+        db.collection(collection).orderBy(queryid).get().then(allRestaurants => createCard(allRestaurants));
+    } else {
+        db.collection(collection).get().then(allRestaurants => createCard(allRestaurants));
     }
-    //code for if a query is sent in
-    function displayCardsDyanmically2(collection){
+}
+dynamicCards("restaurant");
+
+// driver program
+
+// if (queryid == "Thai"){
+// displayCardsDynamically1("restaurant")}
+// else {
+// displayCardsDynamically2("restaurant")};
+
+////////////////////////////////////////////////////////
+
+function createCard(documentArray) {
     let cardTemplate = document.getElementById("restCardTemp");
-    console.log(queryid)
-    db.collection(collection)
-    .orderBy(queryid)
-    .get()
-    .then(allRest=> {
+    documentArray.forEach(doc => {
+        var title = doc.data().name;
+        var details = doc.data().recent_visit;
+        var RestCode = doc.data().bgImage;
+        var resttime = doc.data().hours.fri;
+        var resthours = resttime.split(" ");
+        var am = resthours[0] + resthours[1];
+        var pm = resthours[2] + resthours[3];
+        var restkeyword = doc.data().keywords;
+        var docID = doc.id;
+        let newcard = cardTemplate.content.cloneNode(true);
+        
+        newcard.querySelector('.texttitle').innerHTML = title;
+        newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
+        newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
+        newcard.querySelector('.card-img').src = RestCode;
 
-        allRest.forEach(doc => {
-            var title = doc.data().name;
-            var details = doc.data().recent_visit;
-            var RestCode = doc.data().bgImage;
-            var resttime = doc.data().hours.fri;
-            var resthours = resttime.split(" ");
-            var am = resthours[0] + resthours[1];
-            var pm = resthours[2] + resthours[3];
-            var restkeyword = doc.data().keywords;
-            var docID = doc.id;
-            let newcard = cardTemplate.content.cloneNode(true);
-           
-            newcard.querySelector('.texttitle').innerHTML = title;
-            newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
-            newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
-            newcard.querySelector('.card-img').src = RestCode;
-            newcard.querySelector('#hiddenbutton').href = "/restaurant.html?/" + docID;
+        newcard.getElementById("topcard").addEventListener("click", function (event) {
+            // utilizing local storage to pass restaurant id
+            // localStorage.setItem("id", docID);
+            // window.location.href = "./restaurant.html";
 
-            document.getElementById(collection + "-goes-here").appendChild(newcard)
+            // utilizing URL
+            window.location.href = "./restaurant.html?id=" + docID;
+        });
 
-        })
+    document.getElementById("restaurant-goes-here").appendChild(newcard)
     })
 }
-
-    //driver program
-
-    if (queryid == "Thai"){
-    displayCardsDyanmically1("restaurant")}
-    else {
-    displayCardsDyanmically2("restaurant")};

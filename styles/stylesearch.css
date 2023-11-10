@@ -13,8 +13,9 @@
     justify-content: center;
     align-items: center;
 }
-#hiddenbutton{
-    display: hidden;
+
+#topcard:hover {
+    cursor: pointer;
 }
 
 #img{

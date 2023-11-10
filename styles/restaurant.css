@@ -19,7 +19,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 #topthird {
     grid-row: 1;
     /* default bg image to load if database doesn't have one */
-    background-image: url("./images/default_img.png");
+    background-image: url("../images/default_img.png");
     background-position: center;
     opacity: 100%;
 }

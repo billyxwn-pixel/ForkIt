@@ -1,6 +1,9 @@
-// onload = () => {
+// get restaurant id from local storage (comment out only one)
+// const restaurant_id = localStorage.getItem("id")
 
-// }
+// get restaurant id from url parameters (comment out only one)
+let params = (new URL(document.location)).searchParams;
+const restaurant_id = params.get("id");
 
 function getRestaurantData(restaurant_id) {
 
@@ -24,7 +27,7 @@ function getRestaurantData(restaurant_id) {
                 var res_phone = doc.data().phone;
                 var res_email = doc.data().email;       // reminder: this is to test for no-email cases
                 var res_website = doc.data().website;   // reminder: test some places that don't have websites
-                // var res_address = doc.data().address;   // reminder: need to add to document
+                // var res_address = doc.data().address;
                 // var res_zipcode = doc.data().zipcode;
                 var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
                 // var res_reviews = doc.data().reviews;   // reminder: test later
