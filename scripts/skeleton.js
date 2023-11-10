@@ -58,12 +58,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function setupSearchEventListener() {
-    const searchInput = document.getElementById('search');
+    const searchInput = document.getElementById('searchvalue');
 
     searchInput.addEventListener('keypress', function (event) {
         if (event.key === 'Enter') {
-            const query = searchInput.value;
-            window.location.href = './search.html?q=' + encodeURIComponent(query);
+            var query = searchInput.value;
+            var querys = query.substring(0,1).toUpperCase() + query.substring(1).toLowerCase();
+            localStorage.setItem("query", querys);
+            console.log(querys);
+            window.location.href = './search.html?q=' + encodeURIComponent(querys);
         }
     });
 }
