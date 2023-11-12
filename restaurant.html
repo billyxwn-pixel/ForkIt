@@ -53,7 +53,7 @@
         <div id="restaurant_detail">
 
             <div id="topthird">
-                <a><div class="backbutton"></div></a>
+                <div id="backbutton"><span>&lt;</span></div>
                 <div id="name_and_stars">
                     <p id="restaurant_name"><b></b></p>
                     <!-- Use JS to change class to star/half_star, change display to none, depending on review -->
@@ -118,12 +118,43 @@
 
             <div id="botthird">
                 <div id="review_buttons">
-                    <input type="button" id="review_button" value="Make a review!"/>
-                    <input type="button" id="more_reviews" value="See more reviews"/>
+                    <button id="review_button" onclick="openReview()">Make a review!</button>
+                    <button id="show_more">Show more reviews!</button>
                 </div>
-                <p>There are no reviews here... :(</p>
+                <div id="display_reviews">
+                    <p>There are no reviews here... :(</p>
+                </div>
             </div>
         </div>
+
+        <div id="review_form">
+            <div id="review_content">
+                <form id="review">
+                    <p id="review_hello">Hello you!</p>
+                    <p id="review_restaurant">You are reviewing some restaurant.</p>
+                    <!-- <label>Your name: </label><br/>
+                    <input type="text" id="form_username" placeholder="Firstname Lastname" required/>
+                    <br/> -->
+            
+                    <label>Write your review!</label><br/>
+                    <textarea id="form_text" rows="6" cols="40" placeholder="Type your review here!" required></textarea>
+                    <br/>
+            
+                    <label>How many stars?</label><br/>
+                    <div id="review_star1" class=""></div>
+                    <div id="review_star2" class=""></div>
+                    <div id="review_star3" class=""></div>
+                    <div id="review_star4" class=""></div>
+                    <div id="review_star5" class=""></div>
+            
+                    <br/>
+                    <button id="submit_button" onclick="">Submit</button>   <!-- fill in onclick here -->
+                    <button id="clear_button" onclick="">Clear</button>     <!-- fill in onclick here -->
+                </form> 
+            </div>
+        </div>
+           
+
 
         <!-- Navbar (sticky bottom) -->
         <nav class="navbar fixed-bottom bg-body-tertiary justify-content-center">

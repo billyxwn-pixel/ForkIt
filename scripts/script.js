@@ -20,7 +20,7 @@ function logout() {
       });
 }
 
-function displayCardsDyanmically(collection){
+function displayCardsDynamically(collection){
   let cardTemplate = document.getElementById("restCardTemps");
 
   db.collection(collection).get()
@@ -48,5 +48,5 @@ function displayCardsDyanmically(collection){
   })
 }
 
-displayCardsDyanmically("restaurant");
+displayCardsDynamically("restaurant");
 

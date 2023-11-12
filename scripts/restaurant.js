@@ -3,7 +3,7 @@
 
 // get restaurant id from url parameters (comment out only one)
 let params = (new URL(document.location)).searchParams;
-const restaurant_id = params.get("id");
+const res_id = params.get("id");
 
 function getRestaurantData(restaurant_id) {
 
@@ -72,16 +72,17 @@ function getRestaurantData(restaurant_id) {
                 for (let x = 0; x < Object.keys(hours).length; x++) {
                     let str = Object.values(hours)[x].split(" ");
                     const newstr = str[0] + " " + str[1] + " - " + str[2] + " " + str[3];
-                    console.log(newstr);
                     // console.log(Object.keys(hours)[x] + " " + str);
                     document.getElementById(Object.keys(hours)[x]).innerHTML = newstr;
                 }
                 
+                // Put restaurant name in the review form
+                document.getElementById("review_restaurant").innerHTML = "You are reviewing: " + res_name;
             }
         })
     })
 }
-getRestaurantData("vCALZuwuPfFu9ZwXodie");
+getRestaurantData(res_id);
 
 // Function for adjusting star display depending on the number passed in.
 // 0 = 0 stars
@@ -104,54 +105,37 @@ function setStarDisplay(num) {
 // test the function by running it
 // setStarDisplay(3.4);
 
-// CURRENTLY UNDEFINED
-// Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
-function getReviews(restaurant_id) {
-
-}
-
+// Function to load background image of restaurant
+// NEED TO CHANGE TO LOAD FROM IMG FOLDER BASED ON CODE
 function testBG() {
     var testURL = "https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg";
     document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(" + testURL + ")";
 }
 // testBG();
 
-// //------------------------------------------------------------------------------
-// // Input parameter is a string representing the collection we are reading from
-// //------------------------------------------------------------------------------
-// function displayCardsDynamically(collection) {
-//     let cardTemplate = document.getElementById("hikeCardTemplate"); // Retrieve the HTML element with the ID "hikeCardTemplate" and store it in the cardTemplate variable. 
+// Functionality for back button
 
-//     db.collection(collection).get()   //the collection called "hikes"
-//         .then(allHikes=> {
-//             //var i = 1;  //Optional: if you want to have a unique ID for each hike
-//             allHikes.forEach(doc => { //iterate thru each doc
-//                 var docID = doc.id;
-//                 var title = doc.data().name;       // get value of the "name" key
-//                 var details = doc.data().details;  // get value of the "details" key
-// 								var hikeCode = doc.data().code;    //get unique ID to each hike to be used for fetching right image
-//                 var hikeLength = doc.data().length; //gets the length field
-//                 let newcard = cardTemplate.content.cloneNode(true); // Clone the HTML template to create a new card (newcard) that will be filled with Firestore data.
 
-//                 //update title and text and image
-//                 newcard.querySelector('.card-title').innerHTML = title;
-//                 newcard.querySelector('.card-length').innerHTML = hikeLength +"km";
-//                 newcard.querySelector('.card-text').innerHTML = details;
-//                 newcard.querySelector('.card-image').src = `./images/${hikeCode}.jpg`; //Example: NV01.jpg
+// CURRENTLY UNDEFINED
+// Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
+function getReviews(restaurant_id) {
+    
+}
 
-//                 newcard.querySelector('a').href = "eachHike.html?docID="+docID;
+// Function to popup the review form
+function openReview() {
+    document.getElementById("review_form").style.display = "block";
+}
 
-//                 //Optional: give unique ids to all elements for future use
-//                 // newcard.querySelector('.card-title').setAttribute("id", "ctitle" + i);
-//                 // newcard.querySelector('.card-text').setAttribute("id", "ctext" + i);
-//                 // newcard.querySelector('.card-image').setAttribute("id", "cimage" + i);
+// Close the review form if black background is clicked
+window.onclick = function (event) {
+    var review_form = document.getElementById("review_form");
+    if (event.target == review_form) {
+        review_form.style.display = "none";
+    }
+    else if (event.target == document.getElementById("backbutton")) {
+        history.back();
+    }
+}
 
-//                 //attach to gallery, Example: "hikes-go-here"
-//                 document.getElementById(collection + "-go-here").appendChild(newcard);
-
-//                 //i++;   //Optional: iterate variable to serve as unique ID
-//             })
-//         })
-// }
-
-// displayCardsDynamically("hikes");  //input param is the name of the collection
+// Add event listeners to review form -> stars to light up depending on click or hover

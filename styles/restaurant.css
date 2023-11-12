@@ -24,15 +24,17 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     opacity: 100%;
 }
 
-.backbutton {
-    background-color: white;
+#backbutton {
+    font-size: 30pt;
     width: 30px;
     height: 30px;
-    opacity: 100%;
     position: absolute;
-    top: 15px;
     left: 15px;
-    clip-path: polygon(70% 15%, 30% 50%, 70% 85%, 60% 85%, 20% 50%, 60% 15%);
+    color: white;
+}
+
+#backbutton:hover {
+    cursor: pointer;
 }
 
 #name_and_stars {
@@ -127,7 +129,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     background-color: gray;
 }
 
-#botthird > p {
+#display_reviews > p {
     padding-top: 10px;
     font-size: 18pt;
     text-align: center;
@@ -143,4 +145,41 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 #review_button, #more_reviews {
     width: 150px;
     height: 40px;
+}
+
+/* ------------------------------------------ */
+/* Review popup */
+#review_form {
+    display: none;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.4);
+    height: 100%;
+    width: 100%;
+}
+
+#review_content {
+    background-color: white;
+    margin: 15% auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 85%;
+}
+
+#review_star1, #review_star2, #review_star3, #review_star4, #review_star5 {
+    display: inline-block;
+    width: 26px;
+    height: 26px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+textarea {
+    resize: none;
 }
