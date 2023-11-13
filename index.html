@@ -37,7 +37,7 @@
 
 </head>
 
-<body style="height: 1250px;">
+<body>
     <!------------------------------>
     <!-- Your HTML Layout go here -->
     <!------------------------------>
@@ -47,12 +47,30 @@
     <div class="container">
         <div id="community">
             <button type="button" class="btn btn-secondary btn-lg">What's the Buzz....</button>
+            <section id="reviews"></section>
         </div>
-        <div id="content1" id="restaurant-goes-here" class="row row-cols-12"></div>
+        <div id="content1" id="restaurant-goes-here" class="row row-cols-12">
+        </div>
         </div>
 
             <!-- Cards for  -->
-            
+            <template id="reviewCardTemp">
+                <div class="card" id="card-body">
+                    <div class="row no-gutters" id="body2">
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h5  class="RestTitle">Rest Title</h5>
+                                <p class="card-text" class="authortag">Tags / Attendance</p>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <div class="card-body">
+                                <h5 class="Description">Closes in <br> 3 hours</h5>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
             
             <template id="restCardTemps">
             <div class="container_centered mx-auto" id="topcard">

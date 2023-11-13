@@ -102,7 +102,7 @@ function createCard(documentArray) {
         var am = resthours[0] + resthours[1];
         var pm = resthours[2] + resthours[3];
         var restkeyword = doc.data().keywords;
-        var docID = doc.id;
+        var docID = doc.id;``
         let newcard = cardTemplate.content.cloneNode(true);
         
         newcard.querySelector('.texttitle').innerHTML = title;

@@ -1,10 +1,13 @@
-
+body{
+    overflow-x: hidden;
+    background-color: #DDB79C;
+}
 .container_centered {
     display: flex;
-    justify-content: left;
-    align-items: left;
+    justify-content: center;
+    align-items: center;
     position: relative;
-    width: 80vw;
+    width: 90vw;
     height: 35vh;
 }
 .timetext{
@@ -12,6 +15,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+#restaurant-goes-here{
+    width: 100vw;
 }
 
 #topcard:hover {
@@ -36,7 +43,7 @@
     margin-left: -8px;
     grid-template-columns: 100vw;
     grid-template-rows: 1fr;
-    background-color: white;
+    
 }
 .texttitle{
     font-size: 15pt;
@@ -58,9 +65,13 @@
 }
 
 #search {
-    width: 125vw;
+    width: 100vw;
     position: fixed;
     top: 0;
+}
+
+.card{
+    background-color: #B35B63;
 }
 
 #community {

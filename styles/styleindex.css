@@ -1,10 +1,19 @@
+body{
+    background-color: #DDB79C;
+    overflow-x: hidden;
+}
+
+
 .container_centered {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    width: 80vw;
+    width: 90vw;
+    
 }
+
+
 
 .responsive {
     width: 100%;
@@ -21,7 +30,7 @@
     margin-left: -8px;
     grid-template-columns: 100vw;
     grid-template-rows: 50% 1fr;
-    background-color: white;
+    background-color: #DDB79C;
     grid-template-areas:
         "community"
         "content1";
@@ -36,7 +45,10 @@
 #img{
     height: 20vh;
 }
-
+.card{
+    background-color: #F6F9EF;
+    color: #281C31;
+}
 .center {  
     text-align: center;
 }
@@ -53,15 +65,26 @@
     padding: 20px;
 }
 
+.navbar{
+    width: 100vw;
+}
+
+
 #search {
     position: fixed;
-    top: 0;
+    top: 0px;
+    width: 99vw;
+    padding-left: 2px;
+}
+
+#reviews{
+    grid-area: community;
 }
 
 #community {
     background: lightgray;
     display: flex;
-    width: 100vw;
+    width: 98vw;
     margin: 0;
     padding-top: 6%;
     justify-content: center;
@@ -70,7 +93,5 @@
 }
 
 #content1 {
-    background: white;
     grid-area: content1;
-
 }

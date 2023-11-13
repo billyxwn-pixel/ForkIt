@@ -150,3 +150,38 @@ function writeRestaurants() {
     });
 }
 
+let i = 0; //variable for index
+
+db.collection("restaurant").get().then(review => printReview(review));
+
+
+function printReview(Array){
+    //first check is for placing the go back button
+    if (i > 0){
+        let cardTemplate = document.getElementById("restCardTemp");
+        
+        var doc = Array[i]; //goes through the array to grab A card at this point it would be 1.
+        
+        var RestName = doc.data().restname;
+        var author = doc.data().user;
+        var descrip = doc.data().review;
+        
+        let newcard = cardTemplate.content.cloneNode(true);
+        
+        
+        document.getElementById("restaurant-goes-here").appendChild(newcard)
+    } else if (i == 0){         //second check is to remove the go back button
+        let cardTemplate = document.getElementById("restCardTemp");
+        
+        var doc = Array[i]; //goes through the array to grab A card at this point it would be 0.
+        
+        var RestName = doc.data().restname;
+        var author = doc.data().user;
+        var descrip = doc.data().review;
+        
+        let newcard = cardTemplate.content.cloneNode(true);
+        
+        
+        document.getElementById("restaurant-goes-here").appendChild(newcard)
+    }
+}
