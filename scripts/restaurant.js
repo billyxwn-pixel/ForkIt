@@ -1,10 +1,23 @@
-// get restaurant id from local storage (comment out only one)
-// const restaurant_id = localStorage.getItem("id")
-
-// get restaurant id from url parameters (comment out only one)
-let params = (new URL(document.location)).searchParams;
+// get restaurant id
+// const res = localStorage.getItem("id")               // use local storage to retrieve id
+let params = (new URL(document.location)).searchParams; // use URL query to retrieve id
 const res_id = params.get("id");
 
+let username = "";
+let uid = "";
+// Get the user's name and ID from database. Store them in the above variables for later use.
+function getUsername() {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            uid = user.uid;
+            username = user.displayName;
+            document.getElementById("review_hello").innerHTML = "Hello, " + username + "!";
+        }
+    });
+}
+getUsername();
+
+// Populate the screen with restaurant data from firebase.
 function getRestaurantData(restaurant_id) {
 
     // document.getElementById("topthird").style = 
@@ -105,17 +118,6 @@ function setStarDisplay(num) {
 // test the function by running it
 // setStarDisplay(3.4);
 
-// Function to load background image of restaurant
-// NEED TO CHANGE TO LOAD FROM IMG FOLDER BASED ON CODE
-function testBG() {
-    var testURL = "https://www.chewboom.com/wp-content/uploads/2021/10/Churchs-Chicken-Launches-New-Texas-Cut-Bacon-Chicken-Sandwiches-678x381.jpg";
-    document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(" + testURL + ")";
-}
-// testBG();
-
-// Functionality for back button
-
-
 // CURRENTLY UNDEFINED
 // Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
 function getReviews(restaurant_id) {
@@ -133,9 +135,41 @@ window.onclick = function (event) {
     if (event.target == review_form) {
         review_form.style.display = "none";
     }
-    else if (event.target == document.getElementById("backbutton")) {
-        history.back();
-    }
 }
 
-// Add event listeners to review form -> stars to light up depending on click or hover
+// Event listener for the back button
+document.getElementById("backbutton").addEventListener("click", function (event) {
+    history.back();
+});
+
+// Event listeners for review form -> stars to light up depending on click or hover
+
+// Event listener for submit button
+function submitReview() {
+    var review_text = document.getElementById("form_text").value;
+    if (review_text.trim() == "") {
+        alert("You can't have an empty review!");
+        document.getElementById("form_text").value = "";
+        return;
+    }
+    // insert line to store stars
+    var user = username;
+    var userid = uid;
+
+    if(user) {
+        db.collection("reviews").add({
+            "username": user,
+            "user_id": userid,
+            "restaurant_id": res_id,
+            "review_text": review_text
+            // "stars": variable that stored stars
+        }).then(() => {
+            alert("Review has been submitted!");
+            window.location.href = "/restaurant.html?id=" + res_id;
+        });
+    }
+    else {
+        alert("You are not signed in!");
+        window.location.href = "/restaurant.html?id=" + res_id;
+    } 
+};

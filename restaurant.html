@@ -132,12 +132,9 @@
                 <form id="review">
                     <p id="review_hello">Hello you!</p>
                     <p id="review_restaurant">You are reviewing some restaurant.</p>
-                    <!-- <label>Your name: </label><br/>
-                    <input type="text" id="form_username" placeholder="Firstname Lastname" required/>
-                    <br/> -->
             
                     <label>Write your review!</label><br/>
-                    <textarea id="form_text" rows="6" cols="40" placeholder="Type your review here!" required></textarea>
+                    <textarea id="form_text" rows="6" cols="40" placeholder="Type your review here!"></textarea>
                     <br/>
             
                     <label>How many stars?</label><br/>
@@ -148,8 +145,8 @@
                     <div id="review_star5" class=""></div>
             
                     <br/>
-                    <button id="submit_button" onclick="">Submit</button>   <!-- fill in onclick here -->
-                    <button id="clear_button" onclick="">Clear</button>     <!-- fill in onclick here -->
+                    <button type="button" id="submit_button" onclick="submitReview()">Submit</button>
+                    <button type="reset" id="clear_button">Clear</button>
                 </form> 
             </div>
         </div>
