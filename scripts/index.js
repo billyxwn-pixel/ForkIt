@@ -150,39 +150,62 @@ function writeRestaurants() {
     });
 }
 
-let i = 0; //variable for index
+//Set a few global variables
+var AllPosts = [];
+var MaxPosts = 0;  //will get reassigned to say, 10
+var PostIndex = 0;
 
-db.collection("restaurant").get().then(review => printReview(review));
-
-
-function printReview(Array){
-    //first check is for placing the go back button
-    if (i > 0){
-        let cardTemplate = document.getElementById("restCardTemp");
-        
-        var doc = Array[i]; //goes through the array to grab A card at this point it would be 1.
-        
-        var RestName = doc.data().restname;
-        var author = doc.data().user;
-        var descrip = doc.data().review;
-        
-        let newcard = cardTemplate.content.cloneNode(true);
-        
-        
-        document.getElementById("restaurant-goes-here").appendChild(newcard)
-    } else if (i == 0){         //second check is to remove the go back button
-        let cardTemplate = document.getElementById("restCardTemp");
-        
-        var doc = Array[i]; //goes through the array to grab A card at this point it would be 0.
-        
-        var RestName = doc.data().restname;
-        var author = doc.data().user;
-        var descrip = doc.data().review;
-        
-        let newcard = cardTemplate.content.cloneNode(true);
-        
-        
-        document.getElementById("restaurant-goes-here").appendChild(newcard)
-    }
+//Next button event listener
+function addNextListener(){
+   // var index = MaxPost-PostIndex;
+    document.getElementById("buzz").addEventListener('click', ()=>{
+        if (PostIndex <= 5){
+        displayPostCard(AllPosts[PostIndex]);
+        PostIndex++;} else {
+            PostIndex = 0;
+            displayPostCard(AllPosts[PostIndex])
+        }
+    })
 }
-//Hello
+addNextListener();
+
+function readAllPosts() {
+    db.collection("buzz_reviews")
+        .get()
+        .then(snap => {
+            console.log(snap.size);  // returns size of collection
+            MaxPost = snap.size;     // how many posts we have in total
+            PostIndex = 0;           // start displaying the one at index 0
+            snap.forEach(doc => {
+                AllPosts.push(doc.data());  //add to array with 'push'
+            })
+            displayPostCard(AllPosts[0]);   //display the first post at the beginning
+        })
+}
+readAllPosts();
+
+//------------------------------------------------------------
+// this function displays ONE card, with information
+// from the post document extracted (name, description, image)
+//------------------------------------------------------------
+function displayPostCard(doc) {
+    var title = doc.name; // get value of the "name" key
+    var desc = doc.review; //gets the length field
+    var image = doc.image; //the field that contains the URL 
+
+    //clone the new card
+    let newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
+    
+    //populate with title, image
+    newcard.querySelector('.RestTitle').innerHTML = title;
+    newcard.querySelector('.Description').innerHTML = desc;
+
+    //remove any old cards
+    const element = document.getElementById("posts-go-here");
+    while (element.firstChild){
+        element.removeChild(element.firstChild);
+    }
+
+    //add the new card (overwrites any old ones from before)
+    element.append(newcard);
+}
