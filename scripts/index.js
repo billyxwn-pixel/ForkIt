@@ -102,7 +102,7 @@ function writeRestaurants() {
     });
     restaurantTempData.add({
         code: "FR1",
-        name: "FancyRestaurant 1",
+        name: "FancyRestaurant One",
         hours: {
             "mon": "11:00 PM 11:00 PM",
             "tue": "11:00 PM 11:00 PM",
@@ -126,7 +126,7 @@ function writeRestaurants() {
     });
     restaurantTempData.add({
         code: "FR2",
-        name: "FancyRestaurant 2",
+        name: "FancyRestaurant Two",
         hours: {
             "mon": "11:00 PM 10:00 PM",
             "tue": "11:00 PM 10:00 PM",
@@ -233,4 +233,193 @@ function displayPostCard(doc) {
 
     //add the new card (overwrites any old ones from before)
     element.append(newcard);
+}
+
+function writeRestaurantsReviews() {
+    //define a variable for the collection you want to create in Firestore to populate data
+    var restaurantReviews = db.collection("fake_restaurant_reviews");
+
+    /* Each document includes values for:
+    * Restaurant ID
+    * User ID
+    * Restaurant Name
+    * Star Rating
+    * Review Description
+    * Date the review was made 
+    */
+
+    //Reviews by sadkfa sadfasdf: One for each restaurant
+    restaurantReviews.add({
+        restaurant_id: "raGIfwmgkRvA0a99VwzN",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "Cafe One",
+        stars: 4,
+        review_description: "Enjoyed the artisanal coffee and the cozy, artsy ambiance. Pastries were delicious!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "gpBIHouQPi7KaKcN1HBk",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "Cafe Two",
+        stars: 3,
+        review_description: "Nice place for a quiet coffee."
+        + " The environment was peaceful, but the coffee was average.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "f0EMav5d0nKhCwS2ctUP",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "FastFood One",
+        stars: 4,
+        review_description: "Tacos were delicious and varied." 
+        + " A great spot for satisfying those Mexican food cravings!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "FJYehiJEPRQ3YZUvphox",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "FastFood Two",
+        stars: 3,
+        review_description: "Burger was good, fries were crispy."
+        + " Service was quick, but nothing exceptional.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "psa29DnAU1seNOLFjpEg",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "FancyRestaurant One",
+        stars: 5,
+        review_description: "Absolutely exquisite dining experience."
+        + " Flavors were a symphony, and the ambiance was divine!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "UynCiVyFhDTvwtqd5Zmf",
+        user_id: "CqtUuBRMENM9GU60M5TWrgPSZIJ2",
+        restaurant_name: "FancyRestaurant Two",
+        stars: 4,
+        review_description: "Culinary perfection indeed! The service"
+        + " and ambiance were luxurious, and the dishes were delightful.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    
+    //Reviews by Yes No: One for each restaurant
+    restaurantReviews.add({
+        restaurant_id: "raGIfwmgkRvA0a99VwzN",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "Cafe One",
+        stars: 4,
+        review_description: "Immersed in the artsy aura, the coffee was a"
+        + " delight complemented by scrumptious pastries—a cozy" 
+        + " haven for coffee enthusiasts!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "gpBIHouQPi7KaKcN1HBk",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "Cafe Two",
+        stars: 3,
+        review_description: "Tranquil and serene, but the coffee lacked"
+        + " the expected punch. A calming spot, yet the taste fell short.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "f0EMav5d0nKhCwS2ctUP",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "FastFood One",
+        stars: 4,
+        review_description: "Satisfactory, but limited variety in offerings."
+        + "Tasty tacos, yet more options would elevate the experience.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "FJYehiJEPRQ3YZUvphox",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "FastFood Two",
+        stars: 4,
+        review_description: "The burger was passable, fries were average."
+        + "Service lacked warmth and efficiency,"
+        + " leaving a mediocre dining experience.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "psa29DnAU1seNOLFjpEg",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "FancyRestaurant One",
+        stars: 5,
+        review_description: "An orchestration of exquisite flavors in"
+        + " every dish, harmonized with flawless service and a luxurious"
+        + " ambiance. A must-see in fine dining!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "UynCiVyFhDTvwtqd5Zmf",
+        user_id: "lmqWxhnl4eWl0ovU3rmDw7hvH7p1",
+        restaurant_name: "FancyRestaurant Two",
+        stars: 3,
+        review_description: "A refined dining experience with room for"
+        + " improvement in service. The ambience, however, exuded"
+        + " a charming allure.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+
+    //Reviews by Noob M: One for each restaurant
+    restaurantReviews.add({
+        restaurant_id: "raGIfwmgkRvA0a99VwzN",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "Cafe One",
+        stars: 5,
+        review_description: "Enthralling ambiance coupled with consistently"
+        + " excellent coffee and delightful pastries. A haven"
+        + " worth revisiting!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "gpBIHouQPi7KaKcN1HBk",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "Cafe Two",
+        stars: 4,
+        review_description: "A serene escape offering splendid coffee,"
+        + " perfect for unwinding inside a peaceful environment.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "f0EMav5d0nKhCwS2ctUP",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "FastFood One",
+        stars: 3,
+        review_description: "Reasonable tacos, decent fries,"
+        + " and friendly service, but the overall experience"
+        + " fell short of remarkable.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "FJYehiJEPRQ3YZUvphox",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "FastFood Two",
+        stars: 4,
+        review_description: "A swift, satisfying meal featuring"
+        + " a delicious burger and crispy fries—a friendly stop"
+        + " for a quick bite!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "psa29DnAU1seNOLFjpEg",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "FancyRestaurant One",
+        stars: 4,
+        review_description: "An opulent dining affair delivering"
+        + " delightful flavors and elegance amid a remarkable"
+        + " setting. It was a distinguished culinary journey!",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
+    restaurantReviews.add({
+        restaurant_id: "UynCiVyFhDTvwtqd5Zmf",
+        user_id: "twFao4KcpsbLROHwBucXjj7RjXh2",
+        restaurant_name: "FancyRestaurant Two",
+        stars: 4,
+        review_description: "Beautiful dishes accompanied by a"
+        + " lavish atmosphere and commendable service.",
+        date: firebase.firestore.FieldValue.serverTimestamp(),
+    });
 }
