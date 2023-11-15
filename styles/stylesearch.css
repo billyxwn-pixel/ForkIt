@@ -1,6 +1,6 @@
 body{
     overflow-x: hidden;
-    background-color: #DDB79C;
+    background-color: #b60c05;
 }
 .container_centered {
     display: flex;
@@ -52,7 +52,7 @@ body{
     font-size: 5pt;
 }
 #topcard{
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
 .center {  
@@ -71,7 +71,7 @@ body{
 }
 
 .card{
-    background-color: #B35B63;
+    background-color: #FF7F50;
 }
 
 #community {

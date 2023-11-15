@@ -79,7 +79,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     display: grid;
     grid-template-rows: 15% 85%;
     grid-template-columns: 50% 50%;
-    background-color: beige;
+    background-color: #FF7F50;
 }
 
 #keywords {
@@ -136,7 +136,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
 #review_buttons {
-    background-color: yellow;
+    background-color: #FF7F50;
     padding-bottom: 10px;
     display: flex;
     justify-content: space-evenly;

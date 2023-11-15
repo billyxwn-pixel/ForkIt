@@ -1,5 +1,5 @@
 body{
-    background-color: #DDB79C;
+    background-color: #b60c05;
     overflow-x: hidden;
     height: 1280px;
 }
@@ -29,7 +29,7 @@ body{
     margin-left: -8px;
     grid-template-columns: 100vw;
     grid-template-rows: 40% 1fr;
-    background-color: #DDB79C;
+    background-color: #b60c05;
     grid-template-areas:
         "community"
         "content1";
@@ -45,7 +45,7 @@ body{
     height: 20vh;
 }
 .card{
-    background-color: #F6F9EF;
+    background-color: #FF7F50;
     color: #281C31;
 }
 .center {  

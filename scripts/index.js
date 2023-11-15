@@ -195,7 +195,7 @@ function addNextListener() {
 addNextListener();
 
 function readAllPosts() {
-    db.collection("buzz_reviews")
+    db.collection("fake_restaurant_reviews")
         .get()
         .then(snap => {
             console.log(snap.size);  // returns size of collection
@@ -214,16 +214,23 @@ readAllPosts();
 // from the post document extracted (name, description, image)
 //------------------------------------------------------------
 function displayPostCard(doc) {
-    var title = doc.name; // get value of the "name" key
-    var desc = doc.review; //gets the length field
-    var image = doc.image; //the field that contains the URL 
+    var title = doc.restaurant_name; // get value of the "name" key
+    var desc = doc.review_description; //gets the length field
+    var docID = doc.id;
+    var useid = doc.user_id;
 
     //clone the new card
     let newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
 
+    db.collection("users").orderBy(useid).get().then(user => {
+        var name = user.name;
+        console.log(user);
+        newcard.querySelector("#author").innerHTML = name;
+     })
     //populate with title, image
     newcard.querySelector('.RestTitle').innerHTML = title;
     newcard.querySelector('.Description').innerHTML = desc;
+    
 
     //remove any old cards
     const element = document.getElementById("posts-go-here");
