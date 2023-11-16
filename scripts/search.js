@@ -94,10 +94,16 @@ dynamicCards("restaurant");
 function createCard(documentArray) {
     let cardTemplate = document.getElementById("restCardTemp");
     documentArray.forEach(doc => {
+        
+        const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        const d = new Date();
+        let day = weekday[d.getDay()];
+        let days = day.substring(0, 3);
+        
         var title = doc.data().name;
         var details = doc.data().recent_visit;
         var RestCode = doc.data().bgImage;
-        var resttime = doc.data().hours.fri;
+        var resttime = doc.data().hours[days];
         var resthours = resttime.split(" ");
         var am = resthours[0] + resthours[1];
         var pm = resthours[2] + resthours[3];
@@ -105,10 +111,6 @@ function createCard(documentArray) {
         var docID = doc.id;``
         let newcard = cardTemplate.content.cloneNode(true);
 
-        // figure out what day of the week it is today
-        const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
-        const d = new Date();
-        let day = weekday[d.getDay()];
         
         newcard.querySelector('.texttitle').innerHTML = title;
         newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;

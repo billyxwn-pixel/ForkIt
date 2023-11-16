@@ -27,10 +27,16 @@ function displayCardsDynamically(collection){
   .then(allRest=> {
 
       allRest.forEach(doc => {
+        
+        const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        const d = new Date();
+        let day = weekday[d.getDay()];
+        let days = day.substring(0, 3);
+
           var title = doc.data().name;
           var details = doc.data().recent_visit;
           var RestCode = doc.data().bgImage;
-          var resttime = doc.data().hours.fri;
+          var resttime = doc.data().hours[days];
           var resthours = resttime.split(" ");
           var am = resthours[0] + resthours[1];
           var pm = resthours[2] + resthours[3];
