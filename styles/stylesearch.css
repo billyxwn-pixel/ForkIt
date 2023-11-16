@@ -8,7 +8,7 @@ body{
     align-items: center;
     position: relative;
     width: 90vw;
-    height: 35vh;
+    height: 30vh;
 }
 .timetext{
     font-size: 15pt;
@@ -46,7 +46,7 @@ body{
     
 }
 .texttitle{
-    font-size: 15pt;
+    font-size: 13pt;
 }
 .text{
     font-size: 5pt;

@@ -34,25 +34,34 @@ function displayCardsDynamically(collection){
         let days = day.substring(0, 3);
 
           var title = doc.data().name;
-          var details = doc.data().recent_visit;
-          var RestCode = doc.data().bgImage;
+          var details = doc.data().recently_visited;
+          var RestCode = doc.data().code;
           var resttime = doc.data().hours[days];
           var resthours = resttime.split(" ");
           var am = resthours[0] + resthours[1];
           var pm = resthours[2] + resthours[3];
           var restkeyword = doc.data().keywords;
+          var docID = doc.id;
           let newcard = cardTemplate.content.cloneNode(true);
          
           newcard.querySelector('.texttitle').innerHTML = title;
-          newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
+          newcard.querySelector('.card-text').innerHTML = restkeyword + "<br>" + " Recent Visits: " + details;
           newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
-          newcard.querySelector('.card-img').src = RestCode;
+          newcard.querySelector('.card-img').src = "/images/"+ RestCode + ".jpg";
+          newcard.querySelector(".card").addEventListener("click", function (event) {
+            // utilizing local storage to pass restaurant id
+            // localStorage.setItem("id", docID);
+            // window.location.href = "./restaurant.html";
 
+            // utilizing URL
+            window.location.href = "./restaurant.html?id=" + docID;
+        });
           document.getElementById("content1").appendChild(newcard)
+
 
       })
   })
 }
 
-displayCardsDynamically("restaurant");
+displayCardsDynamically("restaurants");
 
