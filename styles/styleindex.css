@@ -1,7 +1,7 @@
 body{
-    background-color: #b60c05;
+    background-color: #9AD1D4;
     overflow-x: hidden;
-    height: 1280px;
+    height: fit-content;
 }
 
 
@@ -29,7 +29,7 @@ body{
     margin-left: -8px;
     grid-template-columns: 100vw;
     grid-template-rows: 40% 1fr;
-    background-color: #b60c05;
+    background-color: #9AD1D4;
     grid-template-areas:
         "community"
         "content1";
@@ -87,4 +87,5 @@ body{
 #content1 {
     grid-area: content1;
     max-width: 99vw;
+    padding-bottom: 10vh;
 }
