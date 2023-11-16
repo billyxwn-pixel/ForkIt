@@ -218,24 +218,26 @@ function displayPostCard(doc) {
     var desc = doc.review_description; //gets the length field
     var docID = doc.id;
     var useid = doc.user_id;
-
+    
+    db.collection("users").doc(useid).get().then( doc => {
+        var users = doc.data().name;
+        var newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
+        newcard.querySelector('#author').innerHTML = users;
+        newcard.querySelector('.RestTitle').innerHTML = title;
+        newcard.querySelector('.Description').innerHTML = desc;
+        
+    
+        //remove any old cards
+        const element = document.getElementById("posts-go-here");
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    
+        //add the new card (overwrites any old ones from before)
+        element.append(newcard);
+    })
     //clone the new card
-    let newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
 
-    
-    //populate with title, image
-    newcard.querySelector('.RestTitle').innerHTML = title;
-    newcard.querySelector('.Description').innerHTML = desc;
-    
-
-    //remove any old cards
-    const element = document.getElementById("posts-go-here");
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-
-    //add the new card (overwrites any old ones from before)
-    element.append(newcard);
 }
 
 function writeRestaurantsReviews() {
