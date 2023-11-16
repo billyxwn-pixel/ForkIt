@@ -40,10 +40,7 @@ function getRestaurantData(restaurant_id) {
                 var res_phone = doc.data().phone;
                 var res_email = doc.data().email;       // reminder: this is to test for no-email cases
                 var res_website = doc.data().website;   // reminder: test some places that don't have websites
-                // var res_address = doc.data().address;
-                // var res_zipcode = doc.data().zipcode;
                 var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
-                // var res_reviews = doc.data().reviews;   // reminder: test later
 
                 // Change values in top third of layout (restaurant name, background image, stars)
                 document.getElementById("restaurant_name").innerHTML = "<b>" + res_name + "</b>";
@@ -102,8 +99,15 @@ getRestaurantData(res_id);
 // 0 < n < 1 = 0.5 star
 // 1 = 1 star
 // etc...
-function setStarDisplay(num) {
-    const stars = [document.getElementById("star1"), document.getElementById("star2"), document.getElementById("star3"), document.getElementById("star4"), document.getElementById("star5")];
+// Second parameter: 0 for restaurant detail, 1 for review
+function setStarDisplay(num, tmp = 1) {
+    var stars;
+    console.log(tmp);
+    if (tmp != 1) {
+        stars = [tmp.querySelector("#star1"), tmp.querySelector("#star2"), tmp.querySelector("#star3"), tmp.querySelector("#star4"), tmp.querySelector("#star5")];
+    } else {
+        stars = [document.getElementById("star1"), document.getElementById("star2"), document.getElementById("star3"), document.getElementById("star4"), document.getElementById("star5")];
+    }
     for (let i = 0; i < stars.length; i++) {
         if (i <= Math.floor(num) - 1) {
             stars[i].classList.add("star");
@@ -118,11 +122,47 @@ function setStarDisplay(num) {
 // test the function by running it
 // setStarDisplay(3.4);
 
-// CURRENTLY UNDEFINED
 // Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
-function getReviews(restaurant_id) {
-    
+function getReviews(restaurantId) {
+    db.collection("fake_restaurant_reviews").get().then(allReviews => {
+        allReviews.forEach(doc => {
+
+            // Run through review collection and only take reviews for current restaurant
+            if (doc.data().restaurant_id == restaurantId) {
+                // Retrieve review information from document in collection
+                var review_date = doc.data().date.toDate().toDateString();
+                var review_text = doc.data().review_description;
+                var review_stars = doc.data().stars;
+                var review_userid = doc.data().user_id;
+                var review_username;
+                console.log(review_date);
+                // var dateString = new Date(review_date);
+
+                console.log("Review userid: " + review_userid);
+                // Get user's name from the users collection
+                db.collection("users").get().then(allUsers => {
+                    allUsers.forEach(doc2 => {
+                        if (doc2.id === review_userid) {
+                            review_username = doc2.data().name;
+
+                            // Create template, populate with info, and insert into page
+                            let template = document.getElementById("review_card_template");
+                            let newreview = template.content.cloneNode(true);
+
+                            newreview.querySelector(".review_card_name").innerHTML = "<p>" + review_username + "<\/p>";
+                            newreview.querySelector(".review_card_date").innerHTML = "<p>" + review_date + "<\/p>";
+                            newreview.querySelector(".review_card_text").innerHTML = "<p>" + review_text + "<\/p>";
+                            setStarDisplay(review_stars, newreview);
+
+                            document.getElementById("display_reviews").appendChild(newreview);
+                        }
+                    });
+                });
+            }
+        });
+    });
 }
+getReviews(res_id);
 
 // Function to popup the review form
 function openReview() {

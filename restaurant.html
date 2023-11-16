@@ -74,15 +74,11 @@
                         <p><a id="website" href="">Website N/A</a></p>
                     </div>
                     <div id="location">
-                        <!-- <p id="address">1234 Yes Street</p>
-                        <p id="zipcode">H4Y 0L0</p> -->
                         <input type="button" style="background-color: #b60c05;" id="mapbutton" value="Open Maps"/>
                     </div>
                 </div>
                 <div id="hours">
                     <p id="open_or_closed">Open now!</p>
-                    <!-- Maybe make a table column for each section? -->
-                    <!-- ex. column for morning time, AM, -, night time, PM (may make things align better) -->
                     <table id="hours_list">
                         <tr>
                             <th>Mon</th>
@@ -122,7 +118,26 @@
                     <button id="show_more" style="background-color: #b60c05;">Show more reviews!</button>
                 </div>
                 <div id="display_reviews">
-                    <p>There are no reviews here... :(</p>
+                    <template id="review_card_template">
+                        <div class="review_card">
+                            <div class="review_card_name">
+                                <p>Username</p>
+                            </div>
+                            <div class="review_card_date">
+                                <p>Date</p>
+                            </div>
+                            <div class="review_card_text">
+                                <p>A bunch of review text here</p>
+                            </div>
+                            <div class="review_star">
+                                <div id="star1" class=""></div>
+                                <div id="star2" class=""></div>
+                                <div id="star3" class=""></div>
+                                <div id="star4" class=""></div>
+                                <div id="star5" class=""></div>
+                            </div>
+                        </div>
+                    </template>
                 </div>
             </div>
         </div>
