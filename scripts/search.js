@@ -104,6 +104,11 @@ function createCard(documentArray) {
         var restkeyword = doc.data().keywords;
         var docID = doc.id;``
         let newcard = cardTemplate.content.cloneNode(true);
+
+        // figure out what day of the week it is today
+        const weekday = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+        const d = new Date();
+        let day = weekday[d.getDay()];
         
         newcard.querySelector('.texttitle').innerHTML = title;
         newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;

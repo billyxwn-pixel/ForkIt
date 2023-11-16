@@ -222,11 +222,7 @@ function displayPostCard(doc) {
     //clone the new card
     let newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
 
-    db.collection("users").orderBy(useid).get().then(user => {
-        var name = user.name;
-        console.log(user);
-        newcard.querySelector("#author").innerHTML = name;
-     })
+    
     //populate with title, image
     newcard.querySelector('.RestTitle').innerHTML = title;
     newcard.querySelector('.Description').innerHTML = desc;

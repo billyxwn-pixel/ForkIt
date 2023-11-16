@@ -69,12 +69,6 @@ body{
 }
 
 
-#search {
-    position: fixed;
-    top: 0px;
-    width: 99vw;
-    padding-left: 2px;
-}
 
 #reviews{
     grid-area: community;
@@ -92,4 +86,5 @@ body{
 
 #content1 {
     grid-area: content1;
+    max-width: 99vw;
 }
