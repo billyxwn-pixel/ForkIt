@@ -1,8 +1,7 @@
+//function writeRestaurants to create a collection to 
 function writeRestaurants() {
     //define a variable for the collection you want to create in Firestore to populate data
     var restaurantTempData = db.collection("restaurants");
-
-    // keywords still need to be added
 
     restaurantTempData.add({
         code: "CAFE1",
@@ -218,26 +217,29 @@ function displayPostCard(doc) {
     var desc = doc.review_description; //gets the length field
     var docID = doc.id;
     var useid = doc.user_id;
-
+    
+    db.collection("users").doc(useid).get().then( doc => {
+        var users = doc.data().name;
+        var newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
+        newcard.querySelector('#author').innerHTML = users;
+        newcard.querySelector('.RestTitle').innerHTML = title;
+        newcard.querySelector('.Description').innerHTML = desc;
+        
+    
+        //remove any old cards
+        const element = document.getElementById("posts-go-here");
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+    
+        //add the new card (overwrites any old ones from before)
+        element.append(newcard);
+    })
     //clone the new card
-    let newcard = document.getElementById("reviewCardTemp").content.cloneNode(true);
 
-    
-    //populate with title, image
-    newcard.querySelector('.RestTitle').innerHTML = title;
-    newcard.querySelector('.Description').innerHTML = desc;
-    
-
-    //remove any old cards
-    const element = document.getElementById("posts-go-here");
-    while (element.firstChild) {
-        element.removeChild(element.firstChild);
-    }
-
-    //add the new card (overwrites any old ones from before)
-    element.append(newcard);
 }
 
+// writeRestaurantsReviews function to create a collection in firestore 
 function writeRestaurantsReviews() {
     //define a variable for the collection you want to create in Firestore to populate data
     var restaurantReviews = db.collection("fake_restaurant_reviews");
