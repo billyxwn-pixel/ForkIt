@@ -1,8 +1,7 @@
+//function writeRestaurants to create a collection to 
 function writeRestaurants() {
     //define a variable for the collection you want to create in Firestore to populate data
     var restaurantTempData = db.collection("restaurants");
-
-    // keywords still need to be added
 
     restaurantTempData.add({
         code: "CAFE1",
@@ -238,6 +237,7 @@ function displayPostCard(doc) {
     element.append(newcard);
 }
 
+// writeRestaurantsReviews function to create a collection in firestore 
 function writeRestaurantsReviews() {
     //define a variable for the collection you want to create in Firestore to populate data
     var restaurantReviews = db.collection("fake_restaurant_reviews");
