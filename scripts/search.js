@@ -71,14 +71,22 @@ var queryid = localStorage.getItem("query");
 //     })
 // }
 
-// test
 function dynamicCards(collection) {
-    console.log(queryid);
+    // console.log(queryid);
     if (queryid != null && queryid != "" && queryid != undefined) {
-        try {
-            db.collection(collection).where('keywords', 'array-contains', queryid).get().then(allRestaurants => createCard(allRestaurants));
-        } catch (e) {}
-        db.collection(collection).where('keywords', 'not-in', [queryid]).get().then(allRestaurants => createCard(allRestaurants));
+        tmp = queryid.charAt(0).toUpperCase() + queryid.substring(1).toLowerCase();
+        let tmpdb;
+        db.collection(collection).where('keywords', 'array-contains', tmp).get().then(docsThatContain => {
+            // if the get() doesn't return any documents with the keyword, load all
+            if (docsThatContain.size == 0) {
+                db.collection(collection).get().then(allRestaurants => createCard(allRestaurants));
+            } else {
+                // if get() returned at least one document, populate first with documents that contain keyword
+                // then populate with ones without
+                createCard(docsThatContain);
+                db.collection(collection).where('keywords', 'not-in', [tmp]).get().then(docs => createCard(docs));
+            }
+        });
     } else {
         db.collection(collection).get().then(allRestaurants => createCard(allRestaurants));
     }

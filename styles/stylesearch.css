@@ -1,7 +1,7 @@
-body{
-    overflow-x: hidden;
+body {
     background-color: #b60c05;
 }
+
 .container_centered {
     display: flex;
     justify-content: center;
@@ -9,28 +9,28 @@ body{
     position: relative;
     width: 90vw;
     height: 30vh;
+    margin: auto;
 }
-.timetext{
+.timetext {
     font-size: 15pt;
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-#restaurant-goes-here{
+#restaurant-goes-here {
     width: 100vw;
+    height: max-content;
+    padding-top: 5%;
+    padding-bottom: 28%;
 }
 
 #topcard:hover {
     cursor: pointer;
 }
 
-#img{
+#img {
     height: 20vh;
-}
-.responsive {
-    width: 100%;
-    height: auto;
 }
 
 .bcontent {
@@ -38,30 +38,27 @@ body{
 }
 
 .container {
-    display: grid;
     height: 100vh;
-    margin-left: -8px;
+    width: 100vw;
     grid-template-columns: 100vw;
     grid-template-rows: 1fr;
-    
+    padding-bottom: 100px;
 }
-.texttitle{
+
+.texttitle {
     font-size: 13pt;
 }
-.text{
+
+.text {
     font-size: 5pt;
 }
-#topcard{
+
+#topcard {
     margin-top: 50px;
 }
 
 .center {  
     text-align: center;
-}
-
-.container1 {
-    margin: 20px;
-    padding: 20px;
 }
 
 #search {
@@ -72,22 +69,4 @@ body{
 
 .card{
     background-color: #FF7F50;
-}
-
-#community {
-    background: lightgray;
-    display: flex;
-    width: 100vw;
-    margin: 0;
-    padding-top: 6%;
-    justify-content: center;
-    align-items: center;
-
-}
-
-#content1 {
-    background: white;
-    grid-area: content1;
-    grid-area: content1;
-
 }
