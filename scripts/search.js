@@ -75,7 +75,10 @@ var queryid = localStorage.getItem("query");
 function dynamicCards(collection) {
     console.log(queryid);
     if (queryid != null && queryid != "" && queryid != undefined) {
-        db.collection(collection).orderBy(queryid).get().then(allRestaurants => createCard(allRestaurants));
+        try {
+            db.collection(collection).where('keywords', 'array-contains', queryid).get().then(allRestaurants => createCard(allRestaurants));
+        } catch (e) {}
+        db.collection(collection).where('keywords', 'not-in', [queryid]).get().then(allRestaurants => createCard(allRestaurants));
     } else {
         db.collection(collection).get().then(allRestaurants => createCard(allRestaurants));
     }
