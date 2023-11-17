@@ -71,10 +71,12 @@
                     <div id="contactinfo">
                         <p id="phonenumber">Phone number N/A</p>
                         <p id="email">Email N/A</p>
-                        <p><a id="website" href="">Website N/A</a></p>
+                        <p><a id="website">Website N/A</a></p>
                     </div>
                     <div id="location">
                         <input type="button" style="background-color: #b60c05;" id="mapbutton" value="Open Maps"/>
+                        <br/>
+                        <p id="recent_visit"></p>
                     </div>
                 </div>
                 <div id="hours">
@@ -149,16 +151,19 @@
                     <p id="review_restaurant">You are reviewing some restaurant.</p>
             
                     <label>Write your review!</label><br/>
-                    <textarea id="form_text" rows="6" cols="40" placeholder="Type your review here!"></textarea>
+                    <textarea required id="form_text" rows="6" placeholder="Type your review here!"></textarea>
                     <br/>
             
                     <label>How many stars?</label><br/>
-                    <div id="review_star1" class=""></div>
-                    <div id="review_star2" class=""></div>
-                    <div id="review_star3" class=""></div>
-                    <div id="review_star4" class=""></div>
-                    <div id="review_star5" class=""></div>
-            
+                    <select name="review_stars" id="review_stars">
+                        <option value="0">Select a number</option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                    <br/>
                     <br/>
                     <button type="button" id="submit_button" onclick="submitReview()">Submit</button>
                     <button type="reset" id="clear_button">Clear</button>

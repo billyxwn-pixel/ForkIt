@@ -5,6 +5,15 @@ const res_id = params.get("id");
 
 let username = "";
 let uid = "";
+
+// Run these functions on page load
+function doAll() {
+    getUsername();
+    getRestaurantData(res_id);
+    getReviews(res_id);
+}
+doAll();
+
 // Get the user's name and ID from database. Store them in the above variables for later use.
 function getUsername() {
     firebase.auth().onAuthStateChanged(user => {
@@ -15,7 +24,6 @@ function getUsername() {
         }
     });
 }
-getUsername();
 
 // Populate the screen with restaurant data from firebase.
 function getRestaurantData(restaurant_id) {
@@ -23,7 +31,7 @@ function getRestaurantData(restaurant_id) {
     // document.getElementById("topthird").style = 
     // Create database object representing collection of restaurants, and iterate
     // through each document until you reach the restaurant that matches the ID
-    db.collection("restaurant").get().then(allRestaurants => {
+    db.collection("restaurants").get().then(allRestaurants => {
         allRestaurants.forEach(doc => {
 
             // if ID from document matches ID given from URL/localstorage, pull information
@@ -36,18 +44,17 @@ function getRestaurantData(restaurant_id) {
                 var res_name = doc.data().name;
                 var res_stars = doc.data().stars;
                 var res_keywords = doc.data().keywords; // array of keywords
-                var res_bgimage = doc.data().bgImage;   // url link to img in str format
-                var res_phone = doc.data().phone;
-                var res_email = doc.data().email;       // reminder: this is to test for no-email cases
-                var res_website = doc.data().website;   // reminder: test some places that don't have websites
+                var res_bgimage = doc.data().code;
+                var res_phone = doc.data().phone_number;
+                var res_email = doc.data().email;
+                var res_website = doc.data().website;
                 var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
+                var res_recent = doc.data().recently_visited;
 
                 // Change values in top third of layout (restaurant name, background image, stars)
                 document.getElementById("restaurant_name").innerHTML = "<b>" + res_name + "</b>";
                 if (res_bgimage != null && res_bgimage != "") {
-                    // use first line for URL, second line for image code to pull from image folder
-                    document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(" + res_bgimage + ")";
-                    // document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(\"./images/" + res_bgimage + ".png\")";
+                    document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(\"./images/" + res_bgimage + ".jpg\")";
                 }
                 setStarDisplay(res_stars);
                 
@@ -68,7 +75,9 @@ function getRestaurantData(restaurant_id) {
                 }
                 if (res_website != undefined && res_website != "" && res_website != null) {
                     document.getElementById("website").innerHTML = res_website;
+                    // document.getElementById("website").href = "";
                 }
+                document.getElementById("recent_visit").innerHTML = "" + res_recent + " recent visits";
                 
                 let hours = {
                     "mon": res_hours.mon,
@@ -92,7 +101,6 @@ function getRestaurantData(restaurant_id) {
         })
     })
 }
-getRestaurantData(res_id);
 
 // Function for adjusting star display depending on the number passed in.
 // 0 = 0 stars
@@ -102,7 +110,7 @@ getRestaurantData(res_id);
 // Second parameter: 0 for restaurant detail, 1 for review
 function setStarDisplay(num, tmp = 1) {
     var stars;
-    console.log(tmp);
+
     if (tmp != 1) {
         stars = [tmp.querySelector("#star1"), tmp.querySelector("#star2"), tmp.querySelector("#star3"), tmp.querySelector("#star4"), tmp.querySelector("#star5")];
     } else {
@@ -119,12 +127,10 @@ function setStarDisplay(num, tmp = 1) {
         }
     }
 }
-// test the function by running it
-// setStarDisplay(3.4);
 
 // Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
 function getReviews(restaurantId) {
-    db.collection("fake_restaurant_reviews").get().then(allReviews => {
+    db.collection("fake_restaurant_reviews").orderBy("date", "desc").get().then(allReviews => {
         allReviews.forEach(doc => {
 
             // Run through review collection and only take reviews for current restaurant
@@ -135,10 +141,7 @@ function getReviews(restaurantId) {
                 var review_stars = doc.data().stars;
                 var review_userid = doc.data().user_id;
                 var review_username;
-                console.log(review_date);
-                // var dateString = new Date(review_date);
 
-                console.log("Review userid: " + review_userid);
                 // Get user's name from the users collection
                 db.collection("users").get().then(allUsers => {
                     allUsers.forEach(doc2 => {
@@ -162,7 +165,6 @@ function getReviews(restaurantId) {
         });
     });
 }
-getReviews(res_id);
 
 // Function to popup the review form
 function openReview() {
@@ -195,14 +197,21 @@ function submitReview() {
     // insert line to store stars
     var user = username;
     var userid = uid;
+    var stars = document.getElementById("review_stars").value;
+    if (stars == 0) {
+        alert("You need to give a rating!");
+        return;
+    }
 
+    var currentTime = firebase.firestore.Timestamp.fromDate(new Date());
     if(user) {
-        db.collection("reviews").add({
-            "username": user,
+        db.collection("fake_restaurant_reviews").add({
+            // "username": user,
             "user_id": userid,
             "restaurant_id": res_id,
-            "review_text": review_text
-            // "stars": variable that stored stars
+            "review_description": review_text,
+            "date": currentTime,
+            "stars": document.getElementById("review_stars").value
         }).then(() => {
             alert("Review has been submitted!");
             window.location.href = "/restaurant.html?id=" + res_id;
