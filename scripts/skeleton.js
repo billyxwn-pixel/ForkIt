@@ -72,7 +72,7 @@ function setupSearchEventListener() {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    // Fetch and load the search bar HTML
+    // Fetch and load the nav bar HTML
     fetch('./text/navbar_footer.html')
         .then(response => response.text())
         .then(html => {
@@ -90,7 +90,7 @@ function setupSearchEventListener0() {
 
     searchInput.addEventListener('click', function (event) {
         const query = searchInput.value;
-        window.location.href = './index.html?q=' + encodeURIComponent(query);
+        window.location.href = './index.html';
 
     });
 }
@@ -100,7 +100,7 @@ function setupSearchEventListener1() {
 
     searchInput.addEventListener('click', function (event) {
         const query = searchInput.value;
-        window.location.href = './search.html?q=' + encodeURIComponent(query);
+        window.location.href = './search.html';
 
     });
 }

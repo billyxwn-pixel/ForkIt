@@ -45,7 +45,7 @@ function displayCardsDynamically(collection){
           let newcard = cardTemplate.content.cloneNode(true);
          
           newcard.querySelector('.texttitle').innerHTML = title;
-          newcard.querySelector('.card-text').innerHTML = restkeyword + "<br>" + " Recent Visits: " + details;
+          newcard.querySelector('.card-text').innerHTML = restkeyword + "<br>" + " Recent visits: " + details;
           newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
           newcard.querySelector('.card-img').src = "/images/"+ RestCode + ".jpg";
           newcard.querySelector(".card").addEventListener("click", function (event) {

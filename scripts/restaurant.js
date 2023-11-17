@@ -222,3 +222,37 @@ function submitReview() {
         window.location.href = "/restaurant.html?id=" + res_id;
     } 
 };
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Fetch and load the nav bar HTML
+    fetch('./text/navbar_footer.html')
+        .then(response => response.text())
+        .then(html => {
+            document.getElementById('footerPlaceholder').innerHTML = html;
+        })
+        .then(() => {
+            // After loading the search bar, set up the event listener
+            setupSearchEventListener0();
+            setupSearchEventListener1();
+        });
+});
+
+function setupSearchEventListener0() {
+    const searchInput = document.getElementById('home1');
+
+    searchInput.addEventListener('click', function (event) {
+        const query = searchInput.value;
+        window.location.href = './index.html';
+
+    });
+}
+
+function setupSearchEventListener1() {
+    const searchInput = document.getElementById('searchshortcut');
+
+    searchInput.addEventListener('click', function (event) {
+        const query = searchInput.value;
+        window.location.href = './search.html';
+
+    });
+}

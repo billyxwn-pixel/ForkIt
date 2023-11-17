@@ -1,7 +1,13 @@
-body{
+body {
     background-color: #9AD1D4;
     overflow-x: hidden;
     height: fit-content;
+}
+
+#reviewcard {
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .container_centered {
@@ -12,26 +18,17 @@ body{
     height: 37vh;
 }
 
-
 .responsive {
     width: 100vw;
     height: auto;
-}
-
-.bcontent {
-    margin-top: 10px;
 }
 
 .container {
     display: grid;
     height: 100vh;
     margin-left: -8px;
-    grid-template-columns: 100vw;
-    grid-template-rows: 40% 1fr;
+    grid-template-rows: max-content 1fr;
     background-color: #9AD1D4;
-    grid-template-areas:
-        "community"
-        "content1";
 }
 
 .timetext{
@@ -41,6 +38,7 @@ body{
     align-items: center;
     text-align: center;
 }
+
 #img {
     height: 20vh;
 }
@@ -62,25 +60,16 @@ body{
     text-align: center;
 }
 
-.texttitle{
+.texttitle {
     font-size: 12pt;
 }
 
-.text{
+.text {
     font-size: 5pt;
 }
 
-.container1 {
-    margin: 20px;
-    padding: 20px;
-}
-
-.navbar{
+.navbar {
     width: 100vw;
-}
-
-#reviews{
-    grid-area: community;
 }
 
 #community {
@@ -93,11 +82,17 @@ body{
 }
 
 #content1 {
-    grid-area: content1;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
     max-width: 99vw;
     padding-bottom: 10vh;
 }
 
 .card-text {
     font-size: 11pt;
+}
+
+#topcard {
+    height: fit-content;
 }
