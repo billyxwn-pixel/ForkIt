@@ -123,6 +123,10 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     margin-top: 0;
 }
 
+#email {
+    font-size: 8pt;
+}
+
 /* ------------------------------------------ */
 /* Bottom third of screen */
 #botthird {

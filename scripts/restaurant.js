@@ -6,7 +6,7 @@ const res_id = params.get("id");
 let username = "";
 let uid = "";
 
-// Run these functions on page load
+// Run these functions on script load
 function doAll() {
     getUsername();
     getRestaurantData(res_id);
@@ -25,10 +25,9 @@ function getUsername() {
     });
 }
 
-// Populate the screen with restaurant data from firebase.
+// Function to populate the screen with restaurant data from firebase.
 function getRestaurantData(restaurant_id) {
 
-    // document.getElementById("topthird").style = 
     // Create database object representing collection of restaurants, and iterate
     // through each document until you reach the restaurant that matches the ID
     db.collection("restaurants").get().then(allRestaurants => {
@@ -37,18 +36,14 @@ function getRestaurantData(restaurant_id) {
             // if ID from document matches ID given from URL/localstorage, pull information
             // and populate the data on the page
             if (doc.id == restaurant_id) {
-
-                // data to pull:
-                // restaurant name, stars, keywords, bgimage, phone, email, website,
-                // address, zipcode, hours (key/value pairs), reviews
                 var res_name = doc.data().name;
                 var res_stars = doc.data().stars;
-                var res_keywords = doc.data().keywords; // array of keywords
+                var res_keywords = doc.data().keywords;     // array of keywords
                 var res_bgimage = doc.data().code;
                 var res_phone = doc.data().phone_number;
                 var res_email = doc.data().email;
                 var res_website = doc.data().website;
-                var res_hours = doc.data().hours;       // stored as key/value pairs (dictionary), 3-character day code
+                var res_hours = doc.data().hours;           // stored as key/value pairs, 3-character day code
                 var res_recent = doc.data().recently_visited;
 
                 // Change values in top third of layout (restaurant name, background image, stars)
@@ -58,7 +53,7 @@ function getRestaurantData(restaurant_id) {
                 }
                 setStarDisplay(res_stars);
                 
-                // Change values for middle third of layout (keywords, phone, email, website, hours)
+                // Change values for middle third of layout (keywords, phone, email, website, hours, recent visits)
                 if (res_keywords.length != 0) {
                     let str = "Categories: ";
                     for (let x = 0; x < res_keywords.length; x++) {
@@ -95,7 +90,7 @@ function getRestaurantData(restaurant_id) {
                     document.getElementById(Object.keys(hours)[x]).innerHTML = newstr;
                 }
                 
-                // Put restaurant name in the review form
+                // Put restaurant name in the review form (to display when they want to write a review)
                 document.getElementById("review_restaurant").innerHTML = "You are reviewing: " + res_name;
             }
         })
@@ -135,6 +130,7 @@ function getReviews(restaurantId) {
 
             // Run through review collection and only take reviews for current restaurant
             if (doc.data().restaurant_id == restaurantId) {
+
                 // Retrieve review information from document in collection
                 var review_date = doc.data().date.toDate().toDateString();
                 var review_text = doc.data().review_description;
@@ -166,7 +162,7 @@ function getReviews(restaurantId) {
     });
 }
 
-// Function to popup the review form
+// Function to popup the review form in the write review button's onclick
 function openReview() {
     document.getElementById("review_form").style.display = "block";
 }
@@ -179,7 +175,7 @@ window.onclick = function (event) {
     }
 }
 
-// Event listener for the back button
+// Event listener for the back button, user goes to previous page (whether it was search or home)
 document.getElementById("backbutton").addEventListener("click", function (event) {
     history.back();
 });
@@ -189,20 +185,26 @@ document.getElementById("backbutton").addEventListener("click", function (event)
 // Event listener for submit button
 function submitReview() {
     var review_text = document.getElementById("form_text").value;
+
+    // Make sure the review is not empty or only whitespace
     if (review_text.trim() == "") {
         alert("You can't have an empty review!");
         document.getElementById("form_text").value = "";
         return;
     }
-    // insert line to store stars
+    
     var user = username;
     var userid = uid;
     var stars = document.getElementById("review_stars").value;
+
+    // Make sure the user gives a star rating before submission
     if (stars == 0) {
         alert("You need to give a rating!");
         return;
     }
 
+    // Timestamp the review, make a new document in the review collection.
+    // Fails if the user is not signed in.
     var currentTime = firebase.firestore.Timestamp.fromDate(new Date());
     if(user) {
         db.collection("fake_restaurant_reviews").add({
@@ -223,6 +225,7 @@ function submitReview() {
     } 
 };
 
+// Fragment of skeleton.js, loads only the sticky navbar at bottom of screen.
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch and load the nav bar HTML
     fetch('./text/navbar_footer.html')

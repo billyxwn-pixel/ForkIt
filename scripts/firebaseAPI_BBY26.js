@@ -12,7 +12,7 @@ var firebaseConfig = {
 };
 
 //--------------------------------------------
-// initialize the Firebase app that's aboce
+// initialize the Firebase app that's above
 // initialize Firestore database if using it
 //--------------------------------------------
 const app = firebase.initializeApp(firebaseConfig);
