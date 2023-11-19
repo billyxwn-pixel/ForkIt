@@ -108,9 +108,9 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     padding-left: 10px;
 }
 
-#location p {
-    margin-top: 0;
-    margin-bottom: 0;
+#mapbutton {
+    height: 50px;
+    margin-left: 25%;
 }
 
 #hours {

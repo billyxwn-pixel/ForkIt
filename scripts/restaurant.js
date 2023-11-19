@@ -1,10 +1,13 @@
-// get restaurant id
+// Initialize global variables for use later
 // const res = localStorage.getItem("id")               // use local storage to retrieve id
 let params = (new URL(document.location)).searchParams; // use URL query to retrieve id
 const res_id = params.get("id");
 
 let username = "";
 let uid = "";
+
+let res_lat;
+let res_long;
 
 // Run these functions on script load
 function doAll() {
@@ -45,6 +48,8 @@ function getRestaurantData(restaurant_id) {
                 var res_website = doc.data().website;
                 var res_hours = doc.data().hours;           // stored as key/value pairs, 3-character day code
                 var res_recent = doc.data().recently_visited;
+                res_lat = doc.data().latitude;
+                res_long = doc.data().longitude;
 
                 // Change values in top third of layout (restaurant name, background image, stars)
                 document.getElementById("restaurant_name").innerHTML = "<b>" + res_name + "</b>";
@@ -89,6 +94,11 @@ function getRestaurantData(restaurant_id) {
                     // console.log(Object.keys(hours)[x] + " " + str);
                     document.getElementById(Object.keys(hours)[x]).innerHTML = newstr;
                 }
+
+                // Event listener for map button, opens up Google Maps using the restaurant's lat/long data.
+                document.getElementById("mapbutton").addEventListener("click", () => {
+                    window.open("https://www.google.com/maps/@" + res_lat + "," + res_long + ",13z?entry=ttu");
+                });
                 
                 // Put restaurant name in the review form (to display when they want to write a review)
                 document.getElementById("review_restaurant").innerHTML = "You are reviewing: " + res_name;
@@ -122,6 +132,8 @@ function setStarDisplay(num, tmp = 1) {
         }
     }
 }
+
+
 
 // Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
 function getReviews(restaurantId) {
