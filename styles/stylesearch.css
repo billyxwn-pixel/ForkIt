@@ -12,7 +12,7 @@ body {
     margin: auto;
 }
 .timetext {
-    font-size: 15pt;
+    font-size: 13pt;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -67,3 +67,26 @@ body {
     top: 0;
 }
 
+#star1, #star2, #star3, #star4, #star5 {
+    display: none;
+}
+
+#card_stars {
+    max-width: 100%;
+}
+
+.star {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+} 
+
+.half_star {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    background-color: gold;
+    clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}

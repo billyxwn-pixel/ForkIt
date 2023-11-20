@@ -120,6 +120,7 @@ function createCard(documentArray) {
         var pm = resthours[2] + resthours[3];
         var restkeyword = doc.data().keywords;
         var docID = doc.id;
+        var rating = doc.data().stars;
         let newcard = cardTemplate.content.cloneNode(true);
 
         
@@ -127,6 +128,8 @@ function createCard(documentArray) {
         newcard.querySelector('.card-text').innerHTML = restkeyword + " Recent Visits: " + details;
         newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
         newcard.querySelector('.card-img').src = "/images/" + RestCode + ".jpg";
+
+        setStarDisplay(rating, newcard);
 
         newcard.getElementById("topcard").addEventListener("click", function (event) {
             // utilizing local storage to pass restaurant id
@@ -139,4 +142,20 @@ function createCard(documentArray) {
 
     document.getElementById("restaurant-goes-here").appendChild(newcard)
     })
+}
+
+// Function to set the star rating display on the card
+function setStarDisplay(num, tmp) {
+    var stars = [tmp.querySelector("#star1"), tmp.querySelector("#star2"), tmp.querySelector("#star3"), tmp.querySelector("#star4"), tmp.querySelector("#star5")];
+
+    for (let i = 0; i < stars.length; i++) {
+        if (i <= Math.floor(num) - 1) {
+            stars[i].classList.add("star");
+            stars[i].style.display = "inline-block";
+        } else if (num - Math.floor(num) > 0) {
+            stars[i].classList.add("half_star");
+            stars[i].style.display = "inline-block";
+            break;
+        }
+    }
 }
