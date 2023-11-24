@@ -256,7 +256,7 @@ function displayPostCard(doc) {
 
 }
 // var for grabbing user ID if logged in
-var user1 = localStorage.getItem(useid);
+var user1 = localStorage.getItem("user");
 
 //places the username into the welcome message
 function displayUserName(users){
