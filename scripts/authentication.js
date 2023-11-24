@@ -24,7 +24,9 @@ var uiConfig = {
                     city: "Vancouver"                          //optional default profile info
                 }).then(function () {
                     console.log("New user added to firestore");
-                    window.location.assign("index.html");       //re-direct to index.html after signup
+                    window.location.assign("index.html");
+                    localStorage.setItem("user", user.uid);
+                    console.log(user.uid);      //re-direct to index.html after signup
                 }).catch(function (error) {
                     console.log("Error adding new user: " + error);
                 });
