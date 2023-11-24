@@ -181,7 +181,7 @@ var PostIndex = 0;
 //Next button event listener
 function addNextListener() {
     // var index = MaxPost-PostIndex;
-    document.getElementById("buzz").addEventListener('click', () => {
+    document.getElementById("Next").addEventListener('click', () => {
         if (PostIndex <= 5) {
             displayPostCard(AllPosts[PostIndex]);
             PostIndex++;
@@ -191,7 +191,24 @@ function addNextListener() {
         }
     })
 }
+
 addNextListener();
+
+//Adds Previous Button Listener
+function addPreviousListener() {
+    // var index = MaxPost-PostIndex;
+    document.getElementById("Previous").addEventListener('click', () => {
+        if (PostIndex >= 0) {
+            displayPostCard(AllPosts[PostIndex]);
+            PostIndex--;
+        } else {
+            PostIndex = 5;
+            displayPostCard(AllPosts[PostIndex])
+        }
+    })
+}
+
+addPreviousListener();
 
 function readAllPosts() {
     db.collection("fake_restaurant_reviews")
@@ -227,7 +244,7 @@ function displayPostCard(doc) {
         
     
         //remove any old cards
-        const element = document.getElementById("posts-go-here");
+        const element = document.getElementById("reviews");
         while (element.firstChild) {
             element.removeChild(element.firstChild);
         }
@@ -238,6 +255,19 @@ function displayPostCard(doc) {
     //clone the new card
 
 }
+// var for grabbing user ID if logged in
+var user1 = localStorage.getItem(useid);
+
+//places the username into the welcome message
+function displayUserName(users){
+    db.collection("users").doc(user1).get().then( doc => {
+        var name = doc.data().name;
+        document.getElementById("user").innerHTML = name;
+} )
+}
+
+
+displayUserName("users");
 
 // // writeRestaurantsReviews function to create a collection in firestore 
 // function writeRestaurantsReviews() {

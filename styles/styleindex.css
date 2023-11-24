@@ -8,6 +8,7 @@ body {
     height: 200px;
     text-overflow: ellipsis;
     overflow: hidden;
+    width: 320px;
 }
 
 .container_centered {
@@ -15,7 +16,7 @@ body {
     justify-content: center;
     position: relative;
     width: 90vw;
-    height: 37vh;
+    height: 30vh;
 }
 
 .responsive {
@@ -27,8 +28,21 @@ body {
     display: grid;
     height: 100vh;
     margin-left: -8px;
-    grid-template-rows: max-content 1fr;
+    grid-template-rows: max-content max-content 1fr;
     background-color: #9AD1D4;
+}
+
+#Welcome{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    flex-direction: column;
+    font-size: 20pt;
+    border: #281C31;
+    border-style: solid;
+    border-width: 3px;
+    border-radius: 15px;
 }
 
 .timetext{
@@ -55,6 +69,33 @@ body {
     font-size: 15pt;
 }
 
+#reviewsection {
+    grid-area: "community";
+    display: flex;
+    flex-direction: row;
+    width: 98vw;
+    margin: 0%;
+    padding-top: 10%;
+}
+
+#buttonPrev{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#previous{
+    width: 50%;
+}
+
+#buttonNext{
+    width: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
 .center {  
     text-align: center;
 }
@@ -71,14 +112,6 @@ body {
     width: 100vw;
 }
 
-#community {
-    display: flex;
-    width: 98vw;
-    margin: 0;
-    padding-top: 10%;
-    flex-direction: column;
-    align-items: center;
-}
 
 #content1 {
     margin-left: auto;
