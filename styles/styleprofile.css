@@ -28,3 +28,7 @@ body {
     color: black;
     margin: auto;
 }
+
+#returnbarPlaceholder {
+    margin-bottom: 20px;
+}
