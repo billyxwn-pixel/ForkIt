@@ -32,6 +32,7 @@ var uiConfig = {
                     console.log("Error adding new user: " + error);
                 });
             } else {
+                localStorage.setItem("user", user.uid);
                 return true;
             }
             return false;
