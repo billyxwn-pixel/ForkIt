@@ -56,6 +56,9 @@ function getRestaurantData(restaurant_id) {
                 if (res_bgimage != null && res_bgimage != "") {
                     document.getElementById("topthird").style.backgroundImage = "linear-gradient(rgba(255, 255, 255, 0.5), rgba(0, 0, 0, 0.5)), url(\"./images/" + res_bgimage + ".jpg\")";
                 }
+                else {      // Use a default image if the restaurant doesn't have an image
+                    document.getElementById("topthird").style.backgroundImage = "url(\"../images/default_img.png\")";
+                }
                 setStarDisplay(res_stars);
                 
                 // Change values for middle third of layout (keywords, phone, email, website, hours, recent visits)
@@ -165,6 +168,19 @@ function getReviews(restaurantId) {
                             newreview.querySelector(".review_card_text").innerHTML = "<p>" + review_text + "<\/p>";
                             setStarDisplay(review_stars, newreview);
 
+                            if (review_userid == uid) {
+                                newreview.querySelector(".review_delete").style.display = "block";
+                                newreview.querySelector(".review_delete").addEventListener("click", () => {
+                                    let user_confirm = confirm("Do you want to delete your review?");
+                                    if (user_confirm) {
+                                        db.collection("fake_restaurant_reviews").doc(doc.id).delete().then(() => {
+                                            alert("Review deleted!");
+                                        });
+                                        window.location.href = "/restaurant.html?id=" + res_id;
+                                    }
+                                });
+                            }
+
                             document.getElementById("display_reviews").appendChild(newreview);
                         }
                     });
@@ -191,8 +207,6 @@ window.onclick = function (event) {
 document.getElementById("backbutton").addEventListener("click", function (event) {
     history.back();
 });
-
-// Event listeners for review form -> stars to light up depending on click or hover
 
 // Event listener for submit button
 function submitReview() {
