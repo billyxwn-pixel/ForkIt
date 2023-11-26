@@ -239,8 +239,12 @@ textarea {
     display: none;
 }
 
-.delete {
-    width: 70%;
+.edit {
+    width: 40%;
     height: 90%;
-    margin-left: 20%;
+}
+
+.delete {
+    width: 50%;
+    height: 90%;
 }

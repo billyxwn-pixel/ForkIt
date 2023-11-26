@@ -153,6 +153,9 @@ function getReviews(restaurantId) {
                 var review_userid = doc.data().user_id;
                 var review_username;
 
+                if (doc.data().edited == true) {
+                    review_date += " (e)";
+                }
                 // Get user's name from the users collection
                 db.collection("users").get().then(allUsers => {
                     allUsers.forEach(doc2 => {
@@ -168,16 +171,24 @@ function getReviews(restaurantId) {
                             newreview.querySelector(".review_card_text").innerHTML = "<p>" + review_text + "<\/p>";
                             setStarDisplay(review_stars, newreview);
 
+                            // Add edit and delete buttons if the review's user is the current user
                             if (review_userid == uid) {
                                 newreview.querySelector(".review_delete").style.display = "block";
-                                newreview.querySelector(".review_delete").addEventListener("click", () => {
+                                newreview.querySelector(".delete").addEventListener("click", () => {
                                     let user_confirm = confirm("Do you want to delete your review?");
                                     if (user_confirm) {
                                         db.collection("fake_restaurant_reviews").doc(doc.id).delete().then(() => {
                                             alert("Review deleted!");
+                                            window.location.href = "/restaurant.html?id=" + res_id;
                                         });
-                                        window.location.href = "/restaurant.html?id=" + res_id;
                                     }
+                                });
+                                // Open the review tab with the text and stars of the review to edit
+                                newreview.querySelector(".edit").addEventListener("click", () => {
+                                    openReview();
+                                    document.getElementById("submit_button").onclick = () => submitReview(doc.id);
+                                    document.getElementById("form_text").value = review_text;
+                                    document.getElementById("review_stars").value = review_stars;
                                 });
                             }
 
@@ -191,8 +202,12 @@ function getReviews(restaurantId) {
 }
 
 // Function to popup the review form in the write review button's onclick
+// Reset values to empty so it doesn't clash with edit functionality
 function openReview() {
     document.getElementById("review_form").style.display = "block";
+    document.getElementById("form_text").value = "";
+    document.getElementById("review_stars").value = 0;
+    document.getElementById("submit_button").onclick = () => submitReview();
 }
 
 // Close the review form if black background is clicked
@@ -209,7 +224,7 @@ document.getElementById("backbutton").addEventListener("click", function (event)
 });
 
 // Event listener for submit button
-function submitReview() {
+function submitReview(inputDoc = null) {
     var review_text = document.getElementById("form_text").value;
 
     // Make sure the review is not empty or only whitespace
@@ -232,18 +247,43 @@ function submitReview() {
     // Timestamp the review, make a new document in the review collection.
     // Fails if the user is not signed in.
     var currentTime = firebase.firestore.Timestamp.fromDate(new Date());
-    if(user) {
-        db.collection("fake_restaurant_reviews").add({
-            // "username": user,
-            "user_id": userid,
-            "restaurant_id": res_id,
-            "review_description": review_text,
-            "date": currentTime,
-            "stars": document.getElementById("review_stars").value
-        }).then(() => {
-            alert("Review has been submitted!");
-            window.location.href = "/restaurant.html?id=" + res_id;
-        });
+    if (user) {
+        // If a document id is passed in, user is editing review
+        if (inputDoc != null) {
+            db.collection("fake_restaurant_reviews").doc(inputDoc).get().then(reviewDoc => {
+                if (reviewDoc.data().review_description != review_text || reviewDoc.data().stars != stars) {
+                    db.collection("fake_restaurant_reviews").doc(inputDoc).set({
+                        // "username": user,
+                        "user_id": userid,
+                        "restaurant_id": res_id,
+                        "review_description": review_text,
+                        "date": currentTime,
+                        "stars": document.getElementById("review_stars").value,
+                        "edited": true
+                    }).then(() => {
+                        alert("Review was successfully edited!");
+                        window.location.href = "/restaurant.html?id=" + res_id;
+                    });
+                }
+                else {
+                    alert("You didn't edit your review!");
+                }
+            });
+        }
+        // If a document id is not passed in, normal review submission
+        else {
+            db.collection("fake_restaurant_reviews").add({
+                // "username": user,
+                "user_id": userid,
+                "restaurant_id": res_id,
+                "review_description": review_text,
+                "date": currentTime,
+                "stars": document.getElementById("review_stars").value
+            }).then(() => {
+                alert("Review has been submitted!");
+                window.location.href = "/restaurant.html?id=" + res_id;
+            });
+        }
     }
     else {
         alert("You are not signed in!");
