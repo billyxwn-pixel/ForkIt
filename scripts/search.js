@@ -1,81 +1,11 @@
-//to pull the query from the local storage
+// pull the query from the local storage
 var queryid = localStorage.getItem("query");
 
-//code is for if there is no query whatsoever
-// function displayCardsDynamically(collection) {
-//     let cardTemplate = document.getElementById("restCardTemp");
-
-//     db.collection(collection)
-//     .get()
-//     .then(allRest => {
-
-//         allRest.forEach(doc => {
-//             var title = doc.data().name;
-//             var details = doc.data().recent_visit;
-//             var RestCode = doc.data().bgImage;
-//             var resttime = doc.data().hours.fri;
-//             var resthours = resttime.split(" ");
-//             var am = resthours[0] + resthours[1];
-//             var pm = resthours[2] + resthours[3];
-//             var restkeyword = doc.data().keywords;
-//             var docID = doc.id;
-//             let newcard = cardTemplate.content.cloneNode(true);
-            
-//             newcard.querySelector('.texttitle').innerHTML = title;
-//             newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
-//             newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
-//             newcard.querySelector('.card-img').src = RestCode;
-
-//             newcard.getElementById("topcard").addEventListener("click", function (event) {
-//                 // utilizing local storage to pass restaurant id
-//                 // localStorage.setItem("id", docID);
-//                 // window.location.href = "./restaurant.html";
-
-//                 // utilizing URL
-//                 window.location.href = "./restaurant.html?id=" + docID;
-//             });
-
-//             document.getElementById(collection + "-goes-here").appendChild(newcard)
-//         })
-//     })
-// }
-// //code for if a query is sent in
-// function displayCardsDynamically2(collection){
-//     let cardTemplate = document.getElementById("restCardTemp");
-//     console.log(queryid)
-//     db.collection(collection)
-//     .orderBy(queryid)
-//     .get()
-//     .then(allRest=> {
-
-//         allRest.forEach(doc => {
-//             var title = doc.data().name;
-//             var details = doc.data().recent_visit;
-//             var RestCode = doc.data().bgImage;
-//             var resttime = doc.data().hours.fri;
-//             var resthours = resttime.split(" ");
-//             var am = resthours[0] + resthours[1];
-//             var pm = resthours[2] + resthours[3];
-//             var restkeyword = doc.data().keywords;
-//             var docID = doc.id;
-//             let newcard = cardTemplate.content.cloneNode(true);
-            
-//             newcard.querySelector('.texttitle').innerHTML = title;
-//             newcard.querySelector('.card-text').innerHTML = restkeyword + " Attendance: " + details;
-//             newcard.querySelector('.timetext').innerHTML = am + " - " + pm;
-//             newcard.querySelector('.card-img').src = RestCode;
-
-//             document.getElementById(collection + "-goes-here").appendChild(newcard)
-
-//         })
-//     })
-// }
-
+// Function for populating the cards on to the search page
 function dynamicCards(collection) {
     // console.log(queryid);
     if (queryid != null && queryid != "" && queryid != undefined) {
         tmp = queryid.charAt(0).toUpperCase() + queryid.substring(1).toLowerCase();
-        let tmpdb;
         db.collection(collection).where('keywords', 'array-contains', tmp).get().then(docsThatContain => {
             // if the get() doesn't return any documents with the keyword, load all
             if (docsThatContain.size == 0) {
@@ -93,15 +23,7 @@ function dynamicCards(collection) {
 }
 dynamicCards("restaurants");
 
-// driver program
-
-// if (queryid == "Thai"){
-// displayCardsDynamically1("restaurant")}
-// else {
-// displayCardsDynamically2("restaurant")};
-
-////////////////////////////////////////////////////////
-
+// Function for creating a card with restaurant details
 function createCard(documentArray) {
     let cardTemplate = document.getElementById("restCardTemp");
     documentArray.forEach(doc => {

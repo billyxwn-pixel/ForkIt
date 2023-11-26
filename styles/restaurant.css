@@ -31,6 +31,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     position: absolute;
     left: 15px;
     color: white;
+    text-shadow: 1px 1px 3px black;
 }
 
 #backbutton:hover {
