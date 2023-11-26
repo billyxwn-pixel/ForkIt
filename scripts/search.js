@@ -14,7 +14,10 @@ function dynamicCards(collection) {
                 // if get() returned at least one document, populate first with documents that contain keyword
                 // then populate with ones without
                 createCard(docsThatContain);
-                db.collection(collection).where('keywords', 'not-in', [tmp]).get().then(docs => createCard(docs));
+                db.collection(collection).get().then(docs => {
+                    createCard(docs, tmp);
+                });
+
             }
         });
     } else {
@@ -24,7 +27,7 @@ function dynamicCards(collection) {
 dynamicCards("restaurants");
 
 // Function for creating a card with restaurant details
-function createCard(documentArray) {
+function createCard(documentArray, kw = null) {
     let cardTemplate = document.getElementById("restCardTemp");
     documentArray.forEach(doc => {
         
@@ -62,7 +65,9 @@ function createCard(documentArray) {
             window.location.href = "./restaurant.html?id=" + docID;
         });
 
-    document.getElementById("restaurant-goes-here").appendChild(newcard)
+        if (!restkeyword.includes(kw)) {
+            document.getElementById("restaurant-goes-here").appendChild(newcard);
+        }
     })
 }
 
