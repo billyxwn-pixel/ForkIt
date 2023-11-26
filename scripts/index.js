@@ -191,7 +191,6 @@ function addNextListener() {
         }
     })
 }
-
 addNextListener();
 
 //Adds Previous Button Listener
@@ -207,7 +206,6 @@ function addPreviousListener() {
         }
     })
 }
-
 addPreviousListener();
 
 function readAllPosts() {
@@ -265,8 +263,6 @@ function displayUserName(users){
         document.getElementById("user").innerHTML = name;
 } )
 }
-
-
 displayUserName("users");
 
 // // writeRestaurantsReviews function to create a collection in firestore 
