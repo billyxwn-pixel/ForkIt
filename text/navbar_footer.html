@@ -1,3 +1,51 @@
+<!-- Style for the more popup menu -->
+<style>
+#moreContent {
+    background-color: white;
+    margin: 15% auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    padding-left: 15px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    width: 85%;
+}
+
+#morePopup {
+        position: fixed;
+        display: none;
+        left: 0;
+        top: 50px;
+        z-index: 5;
+        background-color: rgba(0, 0, 0, 0.4);
+        height: 100%;
+        width: 30%;
+}
+
+.show {
+        display: block;
+}
+
+</style>
+
+<!-- Javascript for the more popup menu -->
+<script>
+
+        function toggleMorePopup() {
+                const morePopup = document.getElementById('morePopup');
+                console.log('Toggle function called');
+                morePopup.classList.toggle('show');
+        }
+
+        const moreLink = document.getElementById('more')
+
+        moreLink.addEventListener('click', function(event) {
+                event.preventDefault();
+                toggleMorePopup();
+        });
+
+</script>
+
 <!-- Navbar (sticky bottom) -->
 <nav class="navbar fixed-bottom justify-content-center" style="background-color: #FFFFFF;">
     <div class="container-fluid nav-fill text-center">
@@ -15,3 +63,13 @@
                 style="width: 36px; height: 36px;">More...</a>
     </div>
 </nav>
+
+<div id="morePopup" class="more-popup show">
+        <div id="moreContent">
+                <ul>
+                        <li>Login</li>
+                        <li>Logout</li>
+                </ul>
+        </div>
+        
+</div>
