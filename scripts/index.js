@@ -212,7 +212,7 @@ function readAllPosts() {
     db.collection("fake_restaurant_reviews")
         .get()
         .then(snap => {
-            console.log(snap.size);  // returns size of collection
+            // console.log(snap.size);  // returns size of collection
             MaxPost = snap.size;     // how many posts we have in total
             PostIndex = 0;           // start displaying the one at index 0
             snap.forEach(doc => {

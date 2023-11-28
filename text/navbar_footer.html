@@ -1,50 +1,48 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/ui/4.8.1/firebase-ui-auth.js"></script> 
+
 <!-- Style for the more popup menu -->
 <style>
 #moreContent {
     background-color: white;
-    margin: 15% auto;
     border: 2px solid black;
+    margin: 4%;
     border-radius: 10px;
     padding-left: 15px;
+    padding-right: 15px;
     padding-top: 5%;
     padding-bottom: 5%;
-    width: 85%;
+    width: fit-content;
+    text-align: right;
+    position: absolute;
+    bottom: 0;
+    right: 0;
 }
 
 #morePopup {
         position: fixed;
-        display: none;
+        bottom: 75px;
         left: 0;
-        top: 50px;
+        right: 0;
         z-index: 5;
         background-color: rgba(0, 0, 0, 0.4);
         height: 100%;
-        width: 30%;
+        width: 100%;
 }
 
 .show {
-        display: block;
+        display: none;
+}
+
+button {
+        align-content: center;
+        justify-content: center;
 }
 
 </style>
-
-<!-- Javascript for the more popup menu -->
-<script>
-
-        function toggleMorePopup() {
-                const morePopup = document.getElementById('morePopup');
-                console.log('Toggle function called');
-                morePopup.classList.toggle('show');
-        }
-
-        const moreLink = document.getElementById('more')
-
-        moreLink.addEventListener('click', function(event) {
-                event.preventDefault();
-                toggleMorePopup();
-        });
-
-</script>
 
 <!-- Navbar (sticky bottom) -->
 <nav class="navbar fixed-bottom justify-content-center" style="background-color: #FFFFFF;">
@@ -58,18 +56,12 @@
         <a id="comms" class="nav-link" href="./profile.html"><img class="mx-auto d-table-row align-text-bottom nav-logo"
                 src="./images/group_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
                 style="width: 36px; height: 36px;">Profile</a>
-        <a id="more" class="nav-link" href="#"><img class="mx-auto d-table-row align-text-bottom nav-logo"
+        <a id="more" class="nav-link" onclick="toggleMorePopup()"><img class="mx-auto d-table-row align-text-bottom nav-logo"
                 src="./images/menu_FILL0_wght400_GRAD0_opsz40.png" alt="logo"
                 style="width: 36px; height: 36px;">More...</a>
     </div>
 </nav>
 
 <div id="morePopup" class="more-popup show">
-        <div id="moreContent">
-                <ul>
-                        <li>Login</li>
-                        <li>Logout</li>
-                </ul>
-        </div>
-        
+        <div id="moreContent"></div>
 </div>

@@ -105,5 +105,51 @@ function setupSearchEventListener1() {
     });
 }
 
+// function for when the more button is pressed.
+function toggleMorePopup() {
+    const morePopup = document.getElementById('morePopup');
+    morePopup.style.display ='block';
 
+    //Testing the toggleMorePopup() function:
+    // console.log('Toggle function called');
+}
 
+// Function to check the user's authentication state
+firebase.auth().onAuthStateChanged(function(user) {
+    const morePopup = document.getElementById('morePopup');
+    const moreContent = document.getElementById('moreContent');
+
+    // Function to toggle the popup and change content
+    function toggleMorePopup() {
+        if (user) {
+            // User is logged in, show logout
+            moreContent.innerHTML = '<a><button onclick = "logoutOnclick()" id="loggingOut">Logout</button></a>';
+        } else {
+            // User is not logged in, show login
+            moreContent.innerHTML = '<a href="login.html"><button>Login</button></a>';
+        }
+        morePopup.style.display = 'block';
+    }
+
+    // Event listener for the "More" button
+    document.getElementById('more').addEventListener('click', toggleMorePopup);
+});
+
+// Close the review form if black background is clicked
+window.onclick = function (event) {
+    var clickOutPopup = document.getElementById("morePopup");
+    if (event.target == clickOutPopup) {
+        clickOutPopup.style.display = "none";
+    }
+}
+
+// Log-out function
+function logoutOnclick() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        alert("Sign-out successful")
+      }).catch((error) => {
+        // An error happened.
+      });
+      location.replace("index.html")
+}
