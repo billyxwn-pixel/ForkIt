@@ -12,7 +12,7 @@ function readQuote(day) {
 		       //document.querySelector("#quote-goes-here").innerHTML = dayDoc.data().quote;
       })
 }
-//readQuote("tuesday");        //calling the function
+
 
 function getDayOfWeek() {
     const currentDate = new Date();

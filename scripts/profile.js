@@ -45,14 +45,13 @@ function editUserInfo() {
 }
 
 function saveUserInfo() {
-    //enter code here
 
-    //a) get user entered values
+    // get user entered values
     const userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
     const userAddress = document.getElementById('addressInput').value;     //get the value of the field with id="addressInput"
     const userCity = document.getElementById('cityInput').value;       //get the value of the field with id="cityInput"
 
-    //b) update user's document in Firestore
+    // update user's document in Firestore
     currentUser.update({
         name: userName,
         address: userAddress,
@@ -66,7 +65,19 @@ function saveUserInfo() {
         });
 
 
-    //c) disable edit 
+    // disable edit 
     document.getElementById('personalInfoFields').disabled = true;
+}
+
+//------------------------------------------------
+// Call this function when the "logout" button is clicked
+//-------------------------------------------------
+function logout() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        console.log("logging out user");
+      }).catch((error) => {
+        // An error happened.
+      });
 }
 
