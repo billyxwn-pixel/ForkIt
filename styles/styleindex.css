@@ -1,22 +1,18 @@
+
+/**
+main body styling
+**/
 body {
     background-color: #9AD1D4;
-    /* overflow-x: hidden; */
     height: fit-content;
     margin: 0;
     padding: 0;
 }
 
-#reviewcard {
-    height: 200px;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    width: 320px;
-}
 
 .container_centered {
     display: flex;
     justify-content: center;
-    /* position: relative; */
     width: 90vw;
     height: 30vh;
 }
@@ -35,6 +31,7 @@ body {
 }
 
 #Welcome {
+    width: 98vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -47,6 +44,62 @@ body {
     border-radius: 15px;
 }
 
+.navbar {
+    width: 100vw;
+}
+
+#content1 {
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0;
+    max-width: 99vw;
+    padding-bottom: 10vh;
+}
+
+
+/**
+review styling
+**/
+#reviewsection {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    margin: 0%;
+    padding-top: 10%;
+}
+
+#buttonPrev {
+    width: 8%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#previous{
+    width: 50%;
+}
+
+#buttonNext {
+    width: 10vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 1.5%;
+}
+
+#Next{
+    width: 80%;
+}
+
+#reviewcard {
+    height: 200px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    width: 80vw;
+}
+
+/**
+card styling
+**/
 .timetext {
     font-size: 15pt;
     display: flex;
@@ -71,32 +124,6 @@ body {
     font-size: 15pt;
 }
 
-#reviewsection {
-    grid-area: "community";
-    display: flex;
-    flex-direction: row;
-    width: 98vw;
-    margin: 0%;
-    padding-top: 10%;
-}
-
-#buttonPrev {
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-#previous{
-    width: 50%;
-}
-
-#buttonNext {
-    width: 10%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
 .center {  
     text-align: center;
 }
@@ -109,18 +136,6 @@ body {
     font-size: 5pt;
 }
 
-.navbar {
-    width: 100vw;
-}
-
-#content1 {
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 0;
-    max-width: 99vw;
-    padding-bottom: 10vh;
-}
-
 .card-text {
     font-size: 11pt;
 }
@@ -128,3 +143,4 @@ body {
 #topcard {
     height: fit-content;
 }
+

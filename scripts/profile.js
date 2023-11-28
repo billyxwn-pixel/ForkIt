@@ -70,3 +70,15 @@ function saveUserInfo() {
     document.getElementById('personalInfoFields').disabled = true;
 }
 
+//------------------------------------------------
+// Call this function when the "logout" button is clicked
+//-------------------------------------------------
+function logout() {
+    firebase.auth().signOut().then(() => {
+        // Sign-out successful.
+        console.log("logging out user");
+      }).catch((error) => {
+        // An error happened.
+      });
+}
+
