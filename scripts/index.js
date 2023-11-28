@@ -85,5 +85,8 @@ function displayUserName(){
         document.getElementById("user").innerHTML = name;
 } )
 }
-displayUserName("users");
 
+//doesnt run if the userID doesnt exist.
+if (user1 != null){
+    displayUserName();
+} 
