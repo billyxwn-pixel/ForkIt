@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Fetch the content of sidebar.html
+    // Fetch the content of backbar.html
     fetch("./text/backbar.html")
         .then(response => {
             if (!response.ok) {
@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function() {
             return response.text();
         })
         .then(backbarContent => {
-            // Insert the sidebar content into the container
+            // Insert the backbar content into the container
             document.getElementById("returnbarPlaceholder").innerHTML = backbarContent;
         })
         .catch(error => {

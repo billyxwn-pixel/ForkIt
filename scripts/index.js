@@ -1,10 +1,8 @@
-
-
-//Set a few global variables
+// Set a few global variables
 var AllPosts = [];
 var PostIndex = 0;
 
-//Next button event listener
+// Next button event listener
 function addNextListener() {
    
     document.getElementById("Next").addEventListener('click', () => {
@@ -19,7 +17,7 @@ function addNextListener() {
 }
 addNextListener();
 
-//Adds Previous Button Listener
+// Adds Previous Button Listener
 function addPreviousListener() {
    
     document.getElementById("Previous").addEventListener('click', () => {
@@ -34,6 +32,9 @@ function addPreviousListener() {
 }
 addPreviousListener();
 
+// function readAllPosts accesses the collection of reviews 
+// in firebase, pushes them into an array with the first review
+// at index 0, and prepares them for the displayPostCard function.
 function readAllPosts() {
     db.collection("fake_restaurant_reviews")
         .get()
@@ -42,9 +43,9 @@ function readAllPosts() {
             MaxPost = snap.size;     // how many posts we have in total
             PostIndex = 0;           // start displaying the one at index 0
             snap.forEach(doc => {
-                AllPosts.push(doc.data());  //add to array with 'push'
+                AllPosts.push(doc.data());  // add to array with 'push'
             })
-            displayPostCard(AllPosts[0]);   //display the first post at the beginning
+            displayPostCard(AllPosts[0]);   // display the first post at the beginning
         })
 }
 readAllPosts();
@@ -66,11 +67,11 @@ function displayPostCard(doc) {
         newcard.querySelector('.Description').innerHTML = desc;
         
     
-        //remove any old cards
+        // remove any old cards
         const element = document.getElementById("reviews");
         element.innerHTML = "";
     
-        //add the new card (overwrites any old ones from before)
+        // add the new card (overwrites any old ones from before)
         element.append(newcard);
     })
 }
@@ -78,7 +79,7 @@ function displayPostCard(doc) {
 // var for grabbing user ID if logged in
 var user1 = localStorage.getItem("user");
 
-//places the username into the welcome message
+// places the username into the welcome message
 function displayUserName(){
     db.collection("users").doc(user1).get().then( doc => {
         var name = doc.data().name;
@@ -86,7 +87,7 @@ function displayUserName(){
 } )
 }
 
-//doesnt run if the userID doesnt exist.
+// doesnt run if the userID doesnt exist.
 if (user1 != null){
     displayUserName();
 } 
