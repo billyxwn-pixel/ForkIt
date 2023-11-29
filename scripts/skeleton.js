@@ -148,6 +148,7 @@ function logoutOnclick() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
         alert("Sign-out successful")
+        localStorage.clear();
       }).catch((error) => {
         // An error happened.
       });
