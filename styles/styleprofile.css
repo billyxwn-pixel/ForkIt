@@ -1,34 +1,26 @@
+/* Imported noto sans font style from google fonts. */
 @import url('https://fonts.googleapis.com/css2?family=Inter+Tight&family=Noto+Sans:wght@200;400&family=Open+Sans&display=swap');
 
+/* Sets background color of profile page. */
 body {
     background-color: #9AD1D4;
 }
 
-.center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px;
-    padding: 20px;
-}
-
-#logo-font {
-    font-family: 'Inter Tight', sans-serif;
-    font-weight: bold;
-    font-size: 50pt;
+/* Ensures that the anchor element in the div for the backbar
+on profile.html page is black in color with margin set to auto. */
+#returnbarPlaceholder > div > span {
     color: white;
-    margin-bottom: 30px;
-}
-
-#quote-goes-here {
-    color: white;
-}
-
-#returnbarPlaceholder > div > a {
-    color: black;
     margin: auto;
+    text-shadow: 1px 1px 3px black;
 }
 
+/* Pointer changes to cursor when hovering over the back symbol */
+#returnbutton:hover {
+    cursor: pointer;
+}
+
+/* Sets the div element for the backbar to have 20px of margin spacing
+below it. */
 #returnbarPlaceholder {
     margin-bottom: 20px;
 }
