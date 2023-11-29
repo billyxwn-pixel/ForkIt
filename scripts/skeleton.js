@@ -145,12 +145,14 @@ window.onclick = function (event) {
 
 // Log-out function
 function logoutOnclick() {
-    firebase.auth().signOut().then(() => {
-        // Sign-out successful.
-        alert("Sign-out successful")
-        localStorage.clear();
-      }).catch((error) => {
-        // An error happened.
-      });
-      location.replace("index.html")
+    if (confirm("Are you sure you want to log out?")) {
+        firebase.auth().signOut().then(() => {
+            // Sign-out successful.
+            alert("Sign-out successful")
+            localStorage.clear();   
+        }).catch((error) => {
+            // An error happened.
+        });
+        location.replace("index.html")
+    }
 }
