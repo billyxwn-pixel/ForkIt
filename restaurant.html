@@ -45,11 +45,6 @@
         <!------------------------------>
         <!-- Stuff for body goes here -->
 
-        <!-- Things to do:
-            botthird:
-        display review cards, use template and populate with info from firestore
-        -->
-
         <div id="restaurant_detail">
 
             <div id="topthird">
@@ -79,8 +74,13 @@
                         <input type="button" style="background-color: white;" id="mapbutton" value="Open Maps"/>
                     </div>
                 </div>
+
+                <!-- Uses Javascript to determine whether the restaurant 
+                    is open or closed based on your current time -->
                 <div id="hours">
                     <p id="open_or_closed">Open now!</p>
+                    
+                    <!-- Updates the times each restaurant is open and closed using Javascript -->
                     <table id="hours_list">
                         <tr>
                             <th>Mon</th>
@@ -111,26 +111,42 @@
                             <td id="sun">12:00AM - 12:00PM</td>
                         </tr>
                     </table>
+
                 </div>
             </div>
 
             <div id="botthird">
                 <div id="review_buttons">
+
+                    <!-- Button to make a review -->
                     <button id="review_button" style="background-color: white;" onclick="openReview()">Make a review!</button>
+                    
+                    <!-- Button to show more reviews than what is currently on screen -->
                     <button id="show_more" style="background-color: white;">Show more reviews!</button>
                 </div>
+
+                <!-- Shows the reviews made by each user depending on the date they were made -->
+                <!-- Oldest reviews at the bottom -->
                 <div id="display_reviews">
                     <template id="review_card_template">
                         <div class="review_card">
+
+                            <!-- Username of the User -->
                             <div class="review_card_name">
                                 <p>Username</p>
                             </div>
+
+                            <!-- Date the review was made -->
                             <div class="review_card_date">
                                 <p>Date</p>
                             </div>
+
+                            <!-- The Text Review -->
                             <div class="review_card_text">
                                 <p>A bunch of review text here</p>
                             </div>
+
+                            <!-- The Star Review -->
                             <div class="review_star">
                                 <div id="star1" class=""></div>
                                 <div id="star2" class=""></div>
@@ -138,6 +154,8 @@
                                 <div id="star4" class=""></div>
                                 <div id="star5" class=""></div>
                             </div>
+
+                            <!-- If you own the review, it allows you to edit or delete the review -->
                             <div class="review_delete">
                                 <button type="button" class="edit" onclick="">Edit</button>
                                 <button type="button" class="delete">Delete</button>
@@ -148,16 +166,19 @@
             </div>
         </div>
 
+        <!-- Pop-up for the review making -->
         <div id="review_form">
             <div id="review_content">
                 <form id="review">
                     <p id="review_hello">Hello you!</p>
                     <p id="review_restaurant">You are reviewing some restaurant.</p>
             
+                    <!-- Allows you to write text to expand your thoughts on the restaurant -->
                     <label>Write your review!</label><br/>
                     <textarea required id="form_text" rows="6" placeholder="Type your review here!"></textarea>
                     <br/>
             
+                    <!-- Lets the User Choose the Star Rating of the Restaurant Between 1 and 5 -->
                     <label>How many stars?</label><br/>
                     <select name="review_stars" id="review_stars">
                         <option value="0">Select a number</option>
@@ -169,7 +190,11 @@
                     </select>
                     <br/>
                     <br/>
+
+                    <!-- Submit the Review -->
                     <button type="button" id="submit_button" onclick="submitReview()">Submit</button>
+
+                    <!-- Clear the Options you've made so far in the review -->
                     <button type="reset" id="clear_button">Clear</button>
                 </form> 
             </div>

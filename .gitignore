@@ -64,3 +64,10 @@ node_modules/
 
 # dotenv environment variables file
 .env
+
+# hosting tools
+.firebaserc
+404.html
+firebase.json
+firestore.indexes.json
+firestore.rules

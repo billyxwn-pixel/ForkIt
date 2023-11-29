@@ -42,20 +42,33 @@
     <!-- Your HTML Layout go here -->
     <!------------------------------>
     <!-- Stuff for body goes here -->
-    <!---->
+
     <!-- CTA Button for Community Suggested Restaurants -->
     <div class="container">
         <div id="reviewsection">
+            
+            <!-- Restaurant Review Back Button -->
             <div id="buttonPrev"><button id="Previous" type="button" style="width: 100%;"><span class="material-symbols-outlined">
                 arrow_back_ios
                 </span></button></div>
-            <div id="reviews"></div>
+
+                <!-- The Reviews for random restaurants-->
+                <div id="reviews"></div>
+            
+            <!-- Restaurant Review Forward Button -->
             <div id="buttonNext"><button id="Next" type="button"><span class="material-symbols-outlined">
                 arrow_forward_ios
                 </span></button></div>
+                
         </div>
+
+        <!-- Welcome Message -->
         <div id="Welcome">
+
+            <!-- Doesnt include the username when not signed in -->
             <div>Welcome to Forkit</div>
+
+            <!-- User when logged in -->
             <div id="user"></div>
 
         </div>
@@ -63,19 +76,28 @@
         </div>
         </div>
 
+
         <!-- Cards for Restaurants -->
         <template id="reviewCardTemp">
             <div class="card card-body" id="reviewcard">
                 <div class="row no-gutters" id="body2">
                     <div class="col-12">
                         <div class="card-body">
+
+                            <!-- Name of the restaurant Placeholder, if no information shows up -->
                             <h5 class="RestTitle">Rest Title</h5>
+
+                            <!-- The restaurant keywords and how many people went to the resturant placeholder, if nothing shows up -->
                             <p class="card-text authortag" id="author">Tags / Attendance</p>
+
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="card-body">
+
+                            <!-- Opening and Closing Times Placeholder, if no information shows up -->
                             <h5 class="Description" style="font-size: 12pt;">Closes in <br> 3 hours</h5>
+
                         </div>
                     </div>
                 </div>
@@ -92,13 +114,21 @@
                     </div>
                     <div class="col-8">
                         <div class="card-body">
+
+                            <!-- Name of the restaurant Placeholder, if no information shows up -->
                             <h5 class="texttitle" class="card-title"><b>Rest Title</b></h5>
+
+                            <!-- The restaurant keywords and how many people went to the resturant placeholder, if nothing shows up -->
                             <p class="card-text" class="text">Tags / Attendance</p>
+
                         </div>
                     </div>
                     <div class="col-3">
                         <div class="card-body">
+
+                            <!-- Opening and Closing Times Placeholder, if no information shows up -->
                             <h5 class="timetext" class="card-title">Closes in <br> 3 hours</h5>
+
                         </div>
                     </div>
                 </div>
