@@ -6,7 +6,7 @@ ForkIt is a web application intended to give users a more streamlined and commun
 
 ## 2. Contributors
 * Calvin Lee - Project Manager - calvinnlee@gmail.com // clee527@my.bcit.ca
-* Bryan Le - Design Head - 
+* Bryan Le - Design Head - ble16@my.bcit.ca
 * Alenn Dupaya - Programmer - 
 * Billy Wei - Programmer - 
 	
@@ -29,9 +29,7 @@ https://comp1800-bby26-994ce.web.app
 
 ## 5. Known bugs and limitations
 * - Bugs:
-* iOS: More button not showing login/logout
-* Android: Colours show up differently
-* Mobile: Review function, clicking outside the review box doesn't close the form
+* None discovered yet.
 
 * - Limitations:
 * Currently hard-coded to show a restaurant is open now even if it isn't. Code needs to be adjusted to determine if the current time is within the current day's business hours for a restaurant and change the string accordingly.
