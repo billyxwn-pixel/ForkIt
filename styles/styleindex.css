@@ -69,13 +69,15 @@ review styling
 }
 
 #buttonPrev {
-    width: 8%;
+    width: 9vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    
 }
-#previous{
-    width: 50%;
+#Previous{
+    width: 85%;
+    border-radius: 35%;
 }
 
 #buttonNext {
@@ -83,18 +85,19 @@ review styling
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-left: 1.5%;
 }
 
 #Next{
     width: 80%;
+    border-radius: 35%;
+    margin-left: 25%;
 }
 
 #reviewcard {
     height: 200px;
     text-overflow: ellipsis;
     overflow: hidden;
-    width: 80vw;
+    width: 78vw;
 }
 
 /**
