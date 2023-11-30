@@ -65,6 +65,7 @@ function createCard(documentArray, kw = null) {
             window.location.href = "./restaurant.html?id=" + docID;
         });
 
+        // If there is a passed in keyword, only append if it is not one of the restaurant's keywords
         if (!restkeyword.includes(kw)) {
             document.getElementById("restaurant-goes-here").appendChild(newcard);
         }
