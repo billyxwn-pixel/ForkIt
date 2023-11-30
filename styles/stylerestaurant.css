@@ -180,6 +180,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     padding-top: 5%;
     padding-bottom: 5%;
     width: 85%;
+    z-index: 2;
 }
 
 #review {
@@ -188,7 +189,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 
 #form_buttons {
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
 }
 
 #review_star1, #review_star2, #review_star3, #review_star4, #review_star5 {
