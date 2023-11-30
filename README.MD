@@ -1,47 +1,49 @@
 
-# Project Title
+# ForkIt (BBY26)
 
-## 1. Project Description
-State your app in a nutshell, or one-sentence pitch. Give some elaboration on what the core features are.  
-This browser based web application is to offer restaurant-goers a forum to share experiences and a map 
+## 1. Project description
+ForkIt is a web application intended to give users a more streamlined and community-focused experience for restaurant searching compared to other similar applications on the market.
 
-## 2. Names of Contributors
-List team members and/or short bio's here... 
-* Calvin Lee - Project Leader
-* Bryan Le - Design Head
-* Alenn Dupaya - Programmer
-* Billy Wei - Programmer
-* ... HI I AM BRYAN I AM NEW TO CODING AND EXCITED TO LEARN
-* ... Hello I am Alenn hello hello
-* ... Hello I am Calvin, nice to meet you guys.
-* ... Hi I am Billy and I am excited to learn new skills in tech!!!
+## 2. Contributors
+* Calvin Lee - Project Manager - calvinnlee@gmail.com // clee527@my.bcit.ca
+* Bryan Le - Design Head - 
+* Alenn Dupaya - Programmer - 
+* Billy Wei - Programmer - 
 	
-## 3. Technologies and Resources Used
+## 3. Technologies and resources Used
 List technologies (with version numbers), API's, icons, fonts, images, media or data sources, and other resources that were used.
-* HTML, CSS, JavaScript
-* Bootstrap 5.0 (Frontend library)
-* Firebase 8.0 (BAAS - Backend as a Service)
+* HTML5, CSS, JavaScript
+* Bootstrap 5.0
+* Firebase 8.0
+* Google Material Icons
+* COMP1800 Tech Tips
 
-## 4. Complete setup/installion/usage
-State what a user needs to do when they come to your project.  How do others start using your code or application?
-Here are the steps ...
-* ...
-* ...
-* ...
+## 4. Installation / How to access
+* The web application will be deployed through Node and the Firebase module. This can be accessed at the following URL:
+https://comp1800-bby26-994ce.web.app
+* The code can be accessed on Github, where users can clone the repository and run the application locally through Visual Studio Code's Live Server extension. 
+* * Github for the project: https://github.com/calbunn/1800_202330_BBY26
+* * Visual Studio Code: https://code.visualstudio.com
+* * Code Live Server extension: https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer
+* Once the app is running or accessed online, you are free to explore the available functions!
 
-## 5. Known Bugs and Limitations
-Here are some known bugs:
-* ...
-* ...
-* ...
+## 5. Known bugs and limitations
+* - Bugs:
+* iOS: More button not showing login/logout
+* Android: Colours show up differently
+* Mobile: Review function, clicking outside the review box doesn't close the form
 
-## 6. Features for Future
+* - Limitations:
+* Currently hard-coded to show a restaurant is open now even if it isn't. Code needs to be adjusted to determine if the current time is within the current day's business hours for a restaurant and change the string accordingly.
+
+## 6. Features and improvements for the future
 What we'd like to build in the future:
-* ...
-* ...
-* ...
+* Integrate Google Maps better, so the Open Maps button on a restaurant's page can link and provide directions right away without any more input from the user.
+* A more fleshed-out profile function, so the user can upload pictures and put in more information about themselves.
+* A way for users to specify they are a business owner, and let them put their business details into the database.
+* A cleanup on the Firestore database to reduce redundancies and prepare for a larger-scale deployment.
 	
-## 7. Contents of Folder
+## 7. Project folder contents
 Content of the project folder:
 
 ```

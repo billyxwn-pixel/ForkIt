@@ -121,8 +121,6 @@
                     <!-- Button to make a review -->
                     <button id="review_button" style="background-color: white;" onclick="openReview()">Make a review!</button>
                     
-                    <!-- Button to show more reviews than what is currently on screen -->
-                    <button id="show_more" style="background-color: white;">Show more reviews!</button>
                 </div>
 
                 <!-- Shows the reviews made by each user depending on the date they were made -->
@@ -191,11 +189,13 @@
                     <br/>
                     <br/>
 
-                    <!-- Submit the Review -->
-                    <button type="button" id="submit_button" onclick="submitReview()">Submit</button>
-
-                    <!-- Clear the Options you've made so far in the review -->
-                    <button type="reset" id="clear_button">Clear</button>
+                    <!-- Submit, clear, and close buttons -->
+                    <div id="form_buttons">
+                        <button type="button" id="submit_button" onclick="submitReview()">Submit</button>
+                        <button type="reset" id="clear_button">Clear</button>
+                        <button type="button" id="close_form" onclick="closeForm()">Close</button>
+                    </div>
+                    
                 </form> 
             </div>
         </div>

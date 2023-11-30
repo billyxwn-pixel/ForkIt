@@ -211,11 +211,21 @@ function openReview() {
 }
 
 // Close the review form if black background is clicked
-window.onclick = function (event) {
-    var review_form = document.getElementById("review_form");
-    if (event.target == review_form) {
-        review_form.style.display = "none";
-    }
+// window.onclick = function (event) {
+//     var review_form = document.getElementById("review_form");
+//     if (event.target == review_form) {
+//         review_form.style.display = "none";
+//     }
+// }
+
+// Event listener for the background div after opening the review form, to close the form.
+document.getElementById("review_form").addEventListener("click", function (e) {
+    document.getElementById("review_form").style.display = "none";
+});
+
+// Function for the onclick used in the review form to close the button
+function closeForm() {
+    document.getElementById("review_form").style.display = "none";
 }
 
 // Event listener for the back button, user goes to previous page (whether it was search or home)

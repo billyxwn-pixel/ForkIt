@@ -182,6 +182,15 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
     width: 85%;
 }
 
+#review {
+    margin-right: 5%;
+}
+
+#form_buttons {
+    display: flex;
+    justify-content:space-between;
+}
+
 #review_star1, #review_star2, #review_star3, #review_star4, #review_star5 {
     display: inline-block;
     width: 26px;
@@ -192,7 +201,7 @@ clip-path: polygon(50% 0%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 
 textarea {
     resize: none;
-    width: 95%;
+    width: 100%;
 }
 
 /* ------------------------------------------ */
