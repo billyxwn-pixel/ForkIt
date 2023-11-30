@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
             // After loading the search bar, set up the event listener
             setupSearchEventListener0();
             setupSearchEventListener1();
+            load();
         });
 });
 
@@ -105,35 +106,25 @@ function setupSearchEventListener1() {
     });
 }
 
-// function for when the more button is pressed.
-function toggleMorePopup() {
-    const morePopup = document.getElementById('morePopup');
-    morePopup.style.display ='block';
-
-    //Testing the toggleMorePopup() function:
-    // console.log('Toggle function called');
-}
-
 // Function to check the user's authentication state
-firebase.auth().onAuthStateChanged(function(user) {
-    const morePopup = document.getElementById('morePopup');
-    const moreContent = document.getElementById('moreContent');
-
-    // Function to toggle the popup and change content
-    function toggleMorePopup() {
-        if (user) {
-            // User is logged in, show logout
-            moreContent.innerHTML = '<a><button onclick = "logoutOnclick()" id="loggingOut">Logout</button></a>';
-        } else {
-            // User is not logged in, show login
-            moreContent.innerHTML = '<a href="login.html"><button>Login</button></a>';
-        }
-        morePopup.style.display = 'block';
-    }
-
-    // Event listener for the "More" button
-    document.getElementById('more').addEventListener('click', toggleMorePopup);
-});
+function load() {
+    firebase.auth().onAuthStateChanged(user => {
+        const morePopup = document.getElementById('morePopup');
+        const moreContent = document.getElementById('moreContent');
+    
+        // Event listener for the "More" button
+        document.getElementById('more').addEventListener('click', () => {
+            if (user) {
+                // User is logged in, show logout
+                moreContent.innerHTML = '<a><button onclick="logoutOnclick()" id="loggingOut">Logout</button></a>';
+            } else {
+                // User is not logged in, show login
+                moreContent.innerHTML = '<a href="login.html"><button>Login</button></a>';
+            }
+            morePopup.style.display = 'block';
+        });
+    });
+}
 
 // Close the review form if black background is clicked
 window.onclick = function (event) {

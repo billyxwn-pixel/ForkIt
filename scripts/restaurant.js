@@ -136,8 +136,6 @@ function setStarDisplay(num, tmp = 1) {
     }
 }
 
-
-
 // Function for grabbing list of reviews for a restaurant and populating the bottom section of the page with them.
 function getReviews(restaurantId) {
     db.collection("fake_restaurant_reviews").orderBy("date", "desc").get().then(allReviews => {
@@ -212,7 +210,12 @@ function openReview() {
 
 // Close the review form if black background is clicked
 window.onclick = function (event) {
+    // Included code from the skeleton to avoid overwriting the function
     var review_form = document.getElementById("review_form");
+    var clickOutPopup = document.getElementById("morePopup");
+    if (event.target == clickOutPopup) {
+        clickOutPopup.style.display = "none";
+    }
     if (event.target == review_form) {
         review_form.style.display = "none";
     }
@@ -300,38 +303,3 @@ function submitReview(inputDoc = null) {
         window.location.href = "/restaurant.html?id=" + res_id;
     } 
 };
-
-// Fragment of skeleton.js, loads only the sticky navbar at bottom of screen.
-document.addEventListener('DOMContentLoaded', function () {
-    // Fetch and load the nav bar HTML
-    fetch('./text/navbar_footer.html')
-        .then(response => response.text())
-        .then(html => {
-            document.getElementById('footerPlaceholder').innerHTML = html;
-        })
-        .then(() => {
-            // After loading the search bar, set up the event listener
-            setupSearchEventListener0();
-            setupSearchEventListener1();
-        });
-});
-
-function setupSearchEventListener0() {
-    const searchInput = document.getElementById('home1');
-
-    searchInput.addEventListener('click', function (event) {
-        const query = searchInput.value;
-        window.location.href = './index.html';
-
-    });
-}
-
-function setupSearchEventListener1() {
-    const searchInput = document.getElementById('searchshortcut');
-
-    searchInput.addEventListener('click', function (event) {
-        const query = searchInput.value;
-        window.location.href = './search.html';
-
-    });
-}
