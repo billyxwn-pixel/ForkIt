@@ -46,8 +46,10 @@ function editUserInfo() {
 }
 
 // saveUserInfo() function will update the user input from the textbox.
-// and will alert the user that they 
-// It will alert the user that they have already saved their changes
+// and will alert the user that they have updated their user info.
+// It will also alert the user that they have already saved their changes.
+// if the user tries to save again. If the user logs out while on the profile.
+// page, the function will kick the user out and onto the index.html page. 
 function saveUserInfo() {
 
     // get user entered values
