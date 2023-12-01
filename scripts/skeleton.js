@@ -157,6 +157,7 @@ function profileOnClick() {
             location.replace("profile.html");            
         } else {
             alert("Please login first before editing!");
+            location.replace("login.html");
             // No user is signed in.
             // console.log("No user is signed in");
         }
