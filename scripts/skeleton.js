@@ -140,10 +140,25 @@ function logoutOnclick() {
         firebase.auth().signOut().then(() => {
             // Sign-out successful.
             alert("Sign-out successful")
-            localStorage.clear();   
+            localStorage.clear();
         }).catch((error) => {
             // An error happened.
         });
         location.replace("index.html")
     }
 }
+
+// Prevents access to profile page if user is not logged in.
+function profileOnClick() {
+    firebase.auth().onAuthStateChanged(user => {
+        // Check if user is signed in:
+        if (user) {
+            //go to the profile.html page if user object exist in firebase (i.e. is logged-in)
+            location.replace("profile.html");            
+        } else {
+            alert("Please login first before editing!");
+            // No user is signed in.
+            // console.log("No user is signed in");
+        }
+    });
+} 
