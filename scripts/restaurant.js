@@ -5,6 +5,7 @@ const res_id = params.get("id");
 
 let username = "";
 let uid = "";
+let restaurant_name = "";
 
 let res_lat;
 let res_long;
@@ -39,7 +40,8 @@ function getRestaurantData(restaurant_id) {
             // if ID from document matches ID given from URL/localstorage, pull information
             // and populate the data on the page
             if (doc.id == restaurant_id) {
-                var res_name = doc.data().name;
+                restaurant_name = doc.data().name;
+                var res_name = restaurant_name;
                 var res_stars = doc.data().stars;
                 var res_keywords = doc.data().keywords;     // array of keywords
                 var res_bgimage = doc.data().code;
@@ -269,6 +271,7 @@ function submitReview(inputDoc = null) {
                         // "username": user,
                         "user_id": userid,
                         "restaurant_id": res_id,
+                        "restaurant_name": restaurant_name,
                         "review_description": review_text,
                         "date": currentTime,
                         "stars": document.getElementById("review_stars").value,
@@ -289,6 +292,7 @@ function submitReview(inputDoc = null) {
                 // "username": user,
                 "user_id": userid,
                 "restaurant_id": res_id,
+                "restaurant_name": restaurant_name,
                 "review_description": review_text,
                 "date": currentTime,
                 "stars": document.getElementById("review_stars").value
