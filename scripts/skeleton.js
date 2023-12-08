@@ -1,49 +1,4 @@
-//---------------------------------------------------
-// This function loads the parts of your skeleton 
-// (navbar, footer, and other things) into html doc. 
-//---------------------------------------------------
-// function loadSkeleton(){    // .load (is ajax function) is called to load navbarPlaceholder to nav.html file all the time.
-//     console.log($('#navbarPlaceholder').load('./text/nav.html'));
-//     console.log($('#footerPlaceholder').load('./text/footer.html'));
-// }
-// loadSkeleton();  //invoke the function (calling the function in javascript)
-
-//---------------------------------------------------
-// This function loads the parts of your skeleton 
-// (navbar, footer, and other things) into html doc. 
-//---------------------------------------------------
-// function loadSkeleton() {
-
-//     firebase.auth().onAuthStateChanged(function (user) {
-//         if (user) {                   //if the pointer to "user" object is not null, then someone is logged in
-//             // User is signed in.
-//             // Do something for the user here.
-//             console.log($('#searchbarPlaceholder').load('./text/searchbar.html'));
-//             console.log($('#footerPlaceholder').load('./text/navbar_footer.html'));
-//         } else {
-//             // No user is signed in.
-//             console.log($('#searchbarPlaceholder').load('./text/searchbar.html'));
-//             console.log($('#footerPlaceholder').load('./text/navbar_footer.html'));
-//         }
-//     });
-// }
-// loadSkeleton(); //invoke the function
-
-// Function to load and inject HTML content
-// function loadHTMLContent(id, file) {
-//     fetch(file)
-//         .then(response => response.text())
-//         .then(data => {
-//             const element = document.getElementById(id);
-//             element.innerHTML = data;
-//         })
-//         .catch(error => console.error('Error loading HTML content:', error));
-// }
-
-// Load the header and footer
-//loadHTMLContent('searchbarPlaceholder', './text/searchbar.html');
-//loadHTMLContent('footerPlaceholder', './text/navbar_footer.html');
-
+// Event listener which loads the search bar at the top of the page
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch and load the search bar HTML
     fetch('./text/searchbar.html')
@@ -57,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
+// Function that sets up an event listener for the search bar after it has been loaded
 function setupSearchEventListener() {
     const searchInput = document.getElementById('searchvalue');
 
@@ -71,6 +27,7 @@ function setupSearchEventListener() {
     });
 }
 
+// Event listener which loads the navigation bar at the bottom of the screen
 document.addEventListener('DOMContentLoaded', function () {
     // Fetch and load the nav bar HTML
     fetch('./text/navbar_footer.html')
@@ -86,6 +43,7 @@ document.addEventListener('DOMContentLoaded', function () {
         });
 });
 
+// Functions that set up event listeners for the navigation bar
 function setupSearchEventListener0() {
     const searchInput = document.getElementById('home1');
 
@@ -95,7 +53,6 @@ function setupSearchEventListener0() {
 
     });
 }
-
 function setupSearchEventListener1() {
     const searchInput = document.getElementById('searchshortcut');
 
@@ -126,7 +83,7 @@ function load() {
     });
 }
 
-// Close the review form if black background is clicked
+// Closes the review form if black background is clicked
 window.onclick = function (event) {
     var clickOutPopup = document.getElementById("morePopup");
     if (event.target == clickOutPopup) {
@@ -144,7 +101,7 @@ function logoutOnclick() {
         }).catch((error) => {
             // An error happened.
         });
-        location.replace("index.html")
+        location.replace("index.html");
     }
 }
 

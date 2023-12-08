@@ -1,16 +1,24 @@
-// Event listener for the back button, user goes to previous page (whether it was search or home)
+// Global variables for use in this js file
+var currentUser;               // Stores the ID of the user who is logged in
+
+// doAll function to run all required code on profile.html load
+function doAll() {
+    populateUserInfo();
+}
+
+// Event listener for the back button, user goes to previous page
 document.getElementById("returnbarPlaceholder").addEventListener("click", function (event) {
     history.back();
 });
 
-var currentUser;               //points to the document of the user who is logged in
+// Function to display placeholder data for the profile fields if a user is logged in
 function populateUserInfo() {
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
         if (user) {
-            //go to the correct user document by referencing to the user uid
+            // Go to the correct user document by referencing the user uid
             currentUser = db.collection("users").doc(user.uid)
-            //get the document for current user.
+            // Get the document for current user
             currentUser.get()
                 .then(userDoc => {
                     //get the data fields of the user
@@ -18,7 +26,7 @@ function populateUserInfo() {
                     var userAddress = userDoc.data().address;
                     var userCity = userDoc.data().city;
 
-                    //if the data fields are not empty, then write them in to the form.
+                    // If the data fields are not empty, then write them in to the form
                     if (userName != null) {
                         document.getElementById("nameInput").value = userName;
                     }
@@ -28,7 +36,7 @@ function populateUserInfo() {
                     if (userCity != null) {
                         document.getElementById("cityInput").value = userCity;
                     }
-                })
+                });
         } else {
             alert("Please login first before editing!");
             // No user is signed in.
@@ -37,40 +45,36 @@ function populateUserInfo() {
     });
 }
 
-//call the function to run it 
-populateUserInfo();
-
+// Function that enables user editing of the form fields
 function editUserInfo() {
     //Enable the form fields
     document.getElementById('personalInfoFields').disabled = false;
 }
 
-// saveUserInfo() function will update the user input from the textbox.
-// and will alert the user that they have updated their user info.
-// It will also alert the user that they have already saved their changes.
-// if the user tries to save again. If the user logs out while on the profile.
-// page, the function will kick the user out and onto the index.html page. 
+// Function that updates the user's document based on the input provided in the form fields.
+// Alerts the user if the info was successfully updated, nothing was changed, or if there was
+// an error. 
 function saveUserInfo() {
 
-    // get user entered values
-    const userName = document.getElementById('nameInput').value;       //get the value of the field with id="nameInput"
-    const userAddress = document.getElementById('addressInput').value;     //get the value of the field with id="addressInput"
-    const userCity = document.getElementById('cityInput').value;       //get the value of the field with id="cityInput"
+    // Get user entered values
+    const userName = document.getElementById('nameInput').value;
+    const userAddress = document.getElementById('addressInput').value;
+    const userCity = document.getElementById('cityInput').value;
 
     firebase.auth().onAuthStateChanged(user => {
         // Check if user is signed in:
         if (user) {
-            //go to the correct user document by referencing to the user uid
+            // Go to the correct user document by referencing the user uid
             currentUser = db.collection("users").doc(user.uid)
-            //get the document for current user.
             currentUser.get()
                 .then(userDoc => {
-                    //get the data fields of the user
+                    // Get the data fields of the user
                     var userNamedb = userDoc.data().name;
                     var userAddressdb = userDoc.data().address;
                     var userCitydb = userDoc.data().city;
 
-                    //if the data fields are not empty, then write them in to the form.
+                    // Only update the document if something has changed. Provides a meaningful alert to the user
+                    // for each case. (success, no change, fail)
                     if (userNamedb === userName && userAddressdb === userAddress && userCitydb === userCity) {
                         alert("Nothing has been changed.");
                     } else {
@@ -87,20 +91,16 @@ function saveUserInfo() {
                                 alert.error("Error updating document: ", error);
                             });
                     }
-                })
+                });
         } else {
             location.replace("index.html");
-
         }
     });
-
-    // disable edit 
+    // Disable editing once finished
     document.getElementById('personalInfoFields').disabled = true;
 }
 
-//------------------------------------------------
-// Call this function when the "logout" button is clicked
-//-------------------------------------------------
+// Function used for the logout button, signs the user out
 function logout() {
     firebase.auth().signOut().then(() => {
         // Sign-out successful.
@@ -109,4 +109,3 @@ function logout() {
         // An error happened.
     });
 }
-

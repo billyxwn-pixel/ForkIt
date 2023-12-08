@@ -1,6 +1,4 @@
-//----------------------------------------
-//  Your web app's Firebase configuration
-//----------------------------------------
+// Our Firebase/Firestore configuration
 var firebaseConfig = {
 
     apiKey: "AIzaSyBgcOVFb3oQdFJVbJB96yBV-cs-bQmKriw",
@@ -11,9 +9,6 @@ var firebaseConfig = {
     appId: "1:215520092883:web:40898f56f802d072252a26"
 };
 
-//--------------------------------------------
-// initialize the Firebase app that's above
-// initialize Firestore database if using it
-//--------------------------------------------
+// initialize Firebase app using details above, and the Firestore database
 const app = firebase.initializeApp(firebaseConfig);
 const db = firebase.firestore(); //creates a new database for us, "db"

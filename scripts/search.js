@@ -1,23 +1,23 @@
-// pull the query from the local storage
+// Pull the query from the local storage
 var queryid = localStorage.getItem("query");
 
 // Function for populating the cards on to the search page
 function dynamicCards(collection) {
-    // console.log(queryid);
+    // Check that the search properly matches a keyword, ignoring case. 
+    // Parse the documents with the matching keyword first
     if (queryid != null && queryid != "" && queryid != undefined) {
         tmp = queryid.charAt(0).toUpperCase() + queryid.substring(1).toLowerCase();
         db.collection(collection).where('keywords', 'array-contains', tmp).get().then(docsThatContain => {
-            // if the get() doesn't return any documents with the keyword, load all
+            // If the get() doesn't return any documents with the keyword, load all
             if (docsThatContain.size == 0) {
                 db.collection(collection).get().then(allRestaurants => createCard(allRestaurants));
             } else {
-                // if get() returned at least one document, populate first with documents that contain keyword
+                // If get() returned at least one document, populate first with documents that contain keyword
                 // then populate with ones without
                 createCard(docsThatContain);
                 db.collection(collection).get().then(docs => {
                     createCard(docs, tmp);
                 });
-
             }
         });
     } else {
@@ -69,10 +69,11 @@ function createCard(documentArray, kw = null) {
         if (!restkeyword.includes(kw)) {
             document.getElementById("restaurant-goes-here").appendChild(newcard);
         }
-    })
+    });
 }
 
 // Function to set the star rating display on the card
+// This code was taken from the restaurant.js file.
 function setStarDisplay(num, tmp) {
     var stars = [tmp.querySelector("#star1"), tmp.querySelector("#star2"), tmp.querySelector("#star3"), tmp.querySelector("#star4"), tmp.querySelector("#star5")];
 

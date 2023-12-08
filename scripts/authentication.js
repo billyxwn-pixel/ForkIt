@@ -10,28 +10,25 @@ var uiConfig = {
             //------------------------------------------------------------------------------------------
             // The code below is modified from default snippet provided by the FB documentation.
             //
-            // If the user is a "brand new" user, then create a new "user" in your own database.
-            // Assign this user with the name and email provided.
-            // Before this works, you must enable "Firestore" from the firebase console.
-            // The Firestore rules must allow the user to write. 
+            // If the user is a new user, it creates a new document in Firebase, using their email and name.
             //------------------------------------------------------------------------------------------
-            var user = authResult.user;                            // get the user object from the Firebase authentication database
-            if (authResult.additionalUserInfo.isNewUser) {         //if new user
-                db.collection("users").doc(user.uid).set({         //write to firestore. We are using the UID for the ID in users collection
-                    name: user.displayName,                    //"users" collection
-                    email: user.email,                         //with authenticated user's ID (user.uid)
-                    country: "Canada",                      //optional default profile info  
+            var user = authResult.user;                         // get the user object from the Firebase authentication database
+            if (authResult.additionalUserInfo.isNewUser) {      // if new user, create a new document with a new user UI, and some placeholder info
+                db.collection("users").doc(user.uid).set({
+                    name: user.displayName,
+                    email: user.email,
+                    country: "Canada",
                     address: "",    
-                    city: "Vancouver"                          //optional default profile info
+                    city: "Vancouver"
                 }).then(function () {
-                    console.log("New user added to firestore");
+                    console.log("New user added to firestore.");
                     window.location.assign("index.html");
-                    localStorage.setItem("user", user.uid);
-                    console.log(user.uid);      //re-direct to index.html after signup
+                    localStorage.setItem("user", user.uid);     // redirect and store their user id in local storage for later
+                    // console.log(user.uid);
                 }).catch(function (error) {
                     console.log("Error adding new user: " + error);
                 });
-            } else {
+            } else {                                            // run this part if not a new user
                 localStorage.setItem("user", user.uid);
                 return true;
             }
@@ -47,7 +44,6 @@ var uiConfig = {
     signInFlow: 'popup',
     signInSuccessUrl: "index.html",
     signInOptions: [
-        // Leave the lines as is for the providers you want to offer your users.
         // firebase.auth.GoogleAuthProvider.PROVIDER_ID,
         // firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         // firebase.auth.TwitterAuthProvider.PROVIDER_ID,

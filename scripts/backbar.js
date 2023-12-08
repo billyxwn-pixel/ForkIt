@@ -1,3 +1,4 @@
+// Short script to load the back button on the profile page
 document.addEventListener("DOMContentLoaded", function() {
     // Fetch the content of backbar.html
     fetch("./text/backbar.html")
@@ -15,5 +16,3 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Error fetching sidebar content:", error);
         });
 });
-
-

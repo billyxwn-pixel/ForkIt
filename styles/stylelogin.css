@@ -1,6 +1,7 @@
 body {
     background-color: #9AD1D4;
 }
+
 .container_centered {
     display: flex;
     justify-content: center;
@@ -25,9 +26,6 @@ body {
     grid-template-columns: 100vw;
     grid-template-rows: 50% 1fr;
     background-color: #9AD1D4; 
-    grid-template-areas:
-        "community"
-        "content1";
 }
 
 .center {  
@@ -52,7 +50,6 @@ body {
     padding-top: 6%;
     justify-content: center;
     align-items: center;
-
 }
 
 #content1 {

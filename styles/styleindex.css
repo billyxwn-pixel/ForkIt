@@ -1,14 +1,12 @@
 
-/**
-main body styling
-**/
+/* ------------------------------------------ */
+/* Main body styling */
 body {
     background-color: #9AD1D4;
     height: fit-content;
     margin: 0;
     padding: 0;
 }
-
 
 .container_centered {
     display: flex;
@@ -56,10 +54,8 @@ body {
     padding-bottom: 10vh;
 }
 
-
-/**
-review styling
-**/
+/* ------------------------------------------ */
+/* Review card styling */
 #reviewsection {
     display: flex;
     flex-direction: row;
@@ -75,7 +71,8 @@ review styling
     align-items: center;
     
 }
-#Previous{
+
+#Previous {
     width: 80%;
     border-radius: 35%;
 }
@@ -87,7 +84,7 @@ review styling
     justify-content: center;
 }
 
-#Next{
+#Next {
     width: 80%;
     border-radius: 35%;
     margin-left: 25%;
@@ -100,9 +97,8 @@ review styling
     width: 78vw;
 }
 
-/**
-card styling
-**/
+/* ------------------------------------------ */
+/* Restaurant card styling */
 .timetext {
     font-size: 15pt;
     display: flex;
@@ -146,4 +142,3 @@ card styling
 #topcard {
     height: fit-content;
 }
-

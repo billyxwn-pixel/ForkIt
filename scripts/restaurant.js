@@ -1,4 +1,4 @@
-// Initialize global variables for use later
+// Initialize global variables for use later in other functions
 // const res = localStorage.getItem("id")               // use local storage to retrieve id
 let params = (new URL(document.location)).searchParams; // use URL query to retrieve id
 const res_id = params.get("id");
@@ -10,7 +10,7 @@ let restaurant_name = "";
 let res_lat;
 let res_long;
 
-// Run these functions on script load
+// doAll function to run required functions on page load
 function doAll() {
     getUsername();
     getRestaurantData(res_id);
@@ -18,7 +18,7 @@ function doAll() {
 }
 doAll();
 
-// Get the user's name and ID from database. Store them in the above variables for later use.
+// Function to get the user's name and ID from database. Store them in the above variables for later use.
 function getUsername() {
     firebase.auth().onAuthStateChanged(user => {
         if (user) {
@@ -108,8 +108,8 @@ function getRestaurantData(restaurant_id) {
                 // Put restaurant name in the review form (to display when they want to write a review)
                 document.getElementById("review_restaurant").innerHTML = "You are reviewing: " + res_name;
             }
-        })
-    })
+        });
+    });
 }
 
 // Function for adjusting star display depending on the number passed in.
@@ -153,6 +153,7 @@ function getReviews(restaurantId) {
                 var review_userid = doc.data().user_id;
                 var review_username;
 
+                // Add a little e if the review has previously been edited
                 if (doc.data().edited == true) {
                     review_date += " (e)";
                 }
@@ -223,17 +224,12 @@ window.onclick = function (event) {
     }
 }
 
-// Event listener for the background div after opening the review form, to close the form.
-// document.getElementById("review_form").addEventListener("click", function (e) {
-//     document.getElementById("review_form").style.display = "none";
-// });
-
 // Function for the onclick used in the review form to close the button
 function closeForm() {
     document.getElementById("review_form").style.display = "none";
 }
 
-// Event listener for the back button, user goes to previous page (whether it was search or home)
+// Event listener for the back button, user goes to previous page
 document.getElementById("backbutton").addEventListener("click", function (event) {
     history.back();
 });
@@ -268,7 +264,7 @@ function submitReview(inputDoc = null) {
             db.collection("fake_restaurant_reviews").doc(inputDoc).get().then(reviewDoc => {
                 if (reviewDoc.data().review_description != review_text || reviewDoc.data().stars != stars) {
                     db.collection("fake_restaurant_reviews").doc(inputDoc).set({
-                        // "username": user,
+                        "username": user,
                         "user_id": userid,
                         "restaurant_id": res_id,
                         "restaurant_name": restaurant_name,
@@ -282,6 +278,7 @@ function submitReview(inputDoc = null) {
                     });
                 }
                 else {
+                    // Let the user know if they didn't change anything
                     alert("You didn't edit your review!");
                 }
             });
@@ -289,7 +286,7 @@ function submitReview(inputDoc = null) {
         // If a document id is not passed in, normal review submission
         else {
             db.collection("fake_restaurant_reviews").add({
-                // "username": user,
+                "username": user,
                 "user_id": userid,
                 "restaurant_id": res_id,
                 "restaurant_name": restaurant_name,
